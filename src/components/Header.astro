@@ -2,88 +2,134 @@
    <div class="logo">
      <img src="/Tech-Crew/tc.png" alt="Logo de Tech Crew" />
    </div>
- 
-   <nav class="nav-container">
+
+   <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+     <svg width="30" height="30" viewBox="0 0 100 80" fill="white">
+       <rect width="100" height="15"></rect>
+       <rect y="30" width="100" height="15"></rect>
+       <rect y="60" width="100" height="15"></rect>
+     </svg>
+   </button>
+
+   <nav class="nav-container" id="nav">
      <ul class="nav-links">
        <li><a href="/Tech-Crew/">Tech Crew</a></li>
-       <li><a href="/Tech-Crew/Servicios">Servicios</a></li>
+       <li><a href="/Tech-Crew/servicios">Servicios</a></li>
        <li><a href="/Tech-Crew/contacto">Contacto</a></li>
      </ul>
    </nav>
- </header>
- 
- <style>
-   @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100&display=swap');
- 
-   body {
-     margin: 0;
-     font-family: 'Geist', sans-serif;
-     background: black;
-     color: white;
-   }
- 
-   /* Header general */
-   .header {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     padding: 1rem 2rem;
-     background-color: black;
-     border-bottom: 1px solid #000;
-   }
- 
-   /* Logo */
-   .logo img {
-     height: 200px;
-     margin-bottom: 1rem;
-   }
- 
-   /* Navegación */
-   .nav-container {
-     display: flex;
-     justify-content: center;
-     width: 100%;
-   }
- 
-   .nav-links {
-     list-style: none;
-     display: flex;
-     gap: 8rem;
-     padding: 0;
-     margin: 0;
-     align-items: center;
-     justify-content: center;
-   }
- 
-   .nav-links a {
-     text-decoration: none;
-     color: #ffffff;
-     font-size: 25px;
-     padding-bottom: 5px;
-     border-bottom: 1px solid transparent;
-     transition: border-bottom-color 0.3s ease;
-   }
- 
-   .nav-links a:hover {
-     color: #a0afc0;
-     border-bottom-color: #c5c4c4;
-   }
- 
-   /* Responsivo para móviles */
-   @media (max-width: 768px) {
-     .logo img {
-       height: 90px;
-     }
- 
-     .nav-links {
-       flex-direction: column;
-       align-items: center;
-       text-align: center;
-     }
- 
-     .nav-links a {
-       font-size: 18px;
-     }
-   }
- </style>
- 
+</header>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Geist', sans-serif;
+    background: black;
+    color: white;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: black;
+    border-bottom: 1px solid #000;
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .logo img {
+    height: 180px;
+  }
+
+  .nav-container {
+    display: flex;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 10rem;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 25px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom-color 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: #a0afc0;
+    border-bottom-color: #ca0e0e;
+  }
+
+  .menu-toggle {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+
+    .nav-container {
+      display: none;
+      width: 100%;
+    }
+
+    .nav-container.active {
+      display: block;
+    }
+
+    .nav-links {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .nav-links a {
+      font-size: 20px;
+    }
+
+    .logo img {
+      height: 80px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+      });
+
+      // Cierra el menú cuando se hace clic en un enlace
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('active');
+        });
+      });
+    }
+  });
+</script>
