@@ -33,7 +33,7 @@ import Header from '../components/Header.astro';
 	}
 
 	.hero-image {
-		max-width: 60%;
+		max-width: 45%;
 		padding-top: 1%;
 		margin-right: 25%;
 	}
@@ -71,4 +71,35 @@ import Header from '../components/Header.astro';
 		background-color: #fdf6f6;
 	}
 
+	@media (max-width: 768px) {
+		.hero-section {
+			flex-direction: column;
+			text-align: center;
+			padding: 2rem 1rem;
+		}
+
+		.hero-image {
+			max-width: 100%;
+			margin-bottom: 2rem;
+			margin-left: 10rem;
+		}
+
+		.hero-content {
+			align-items: center;
+			max-width: 80%;
+			padding-left: 0;
+			padding-right: 10rem;
+			margin-left: 10rem;
+			max-width: 40%;
+		}
+
+		.hero-content h3 {
+			font-size: 2rem;
+		}
+
+		.cta-button {
+			font-size: 1rem;
+			padding: 0.8rem 1.5rem;
+		}
+	}
 </style>
