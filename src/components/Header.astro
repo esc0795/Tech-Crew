@@ -14,7 +14,6 @@
    <nav class="nav-container" id="nav">
      <ul class="nav-links">
        <li><a href="/Tech-Crew/">Tech Crew</a></li>
-       <li><a href="/Tech-Crew/servicios">Soluciones</a></li>
        <li><a href="/Tech-Crew/contacto">Contacto</a></li>
      </ul>
    </nav>
@@ -37,7 +36,11 @@
      padding: 1rem 2rem;
      background-color: black;
      border-bottom: 1px solid #000;
-     position: relative;
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 90%;
+     z-index: 1000;
    }
  
    .logo img {
@@ -75,8 +78,8 @@
    }
  
    .nav-links a:hover {
-     color: #a0afc0;
-     border-bottom-color: #ca0e0e;
+     color: #d4d4bf;
+     border-bottom-color: #f1cd00;
    }
  
    /* ------------------ Responsive ------------------ */
