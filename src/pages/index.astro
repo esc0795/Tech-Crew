@@ -24,10 +24,10 @@ import Header from '../components/Header.astro';
 
     <!-- SECCIÓN DE REDES SOCIALES -->
     <section class="social-section" id="social">
-      <h4>Siguenos en nuestras redes</h4>
+      <h4>Redes sociales</h4>
       <div class="social-links">
         <a href="https://instagram.com/tuusuario" target="_blank">Instagram</a>
-        <a href="https://facebook.com/tuusuario" target="_blank">TikTok</a>
+        <a href="https://www.tiktok.com/es/" target="_blank">TikTok</a>
         <a href="https://wa.me/506XXXXXXXX" target="_blank">WhatsApp</a>
       </div>
     </section>
@@ -35,7 +35,40 @@ import Header from '../components/Header.astro';
     <!-- SECCIÓN DE SOLUCIONES -->
     <section class="soluciones-section" id="soluciones">
       <h2>Nuestras Soluciones</h2>
-      <p>Landing pages, SEO, despliegues en la nube y branding digital adaptado a tu negocio.</p>
+      <div class="solution-cards">
+        <!-- Card: Landing Pages -->
+        <div class="solution-card">
+          <div class="card-header" onclick="toggleCard(this)">
+            <span>Landing Pages</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="card-content">
+            <p>Diseñamos páginas de aterrizaje optimizadas para captar clientes potenciales y aumentar conversiones.</p>
+          </div>
+        </div>
+
+        <!-- Card: SEO -->
+        <div class="solution-card">
+          <div class="card-header" onclick="toggleCard(this)">
+            <span>SEO</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="card-content">
+            <p>Posicionamos tu web para aparecer primero en Google y atraer tráfico de calidad.</p>
+          </div>
+        </div>
+
+        <!-- Card: Despliegues -->
+        <div class="solution-card">
+          <div class="card-header" onclick="toggleCard(this)">
+            <span>Despliegues Cloud</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="card-content">
+            <p>Desplegamos tu proyecto en hosting moderno: GitHub Pages, Netlify o Vercel.</p>
+          </div>
+        </div>
+      </div>
     </section>
   </body>
 </html>
@@ -113,7 +146,7 @@ import Header from '../components/Header.astro';
   .social-section h4 {
     font-size: 2.9rem;
     margin-bottom: 1rem;
-	font-weight: bold;
+    font-weight: bold;
   }
 
   .social-links {
@@ -127,7 +160,7 @@ import Header from '../components/Header.astro';
     color: #f1cd00;
     text-decoration: none;
     font-size: 1.8rem;
-	font-weight: bold;
+    font-weight: bold;
   }
 
   .social-links a:hover {
@@ -144,11 +177,59 @@ import Header from '../components/Header.astro';
 
   .soluciones-section h2 {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
-  .soluciones-section p {
-	font-size: 1.3rem;
+  .solution-cards {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .solution-card {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    background: #1a1a1a;
+  }
+
+  .card-header:hover {
+    background: #222;
+  }
+
+  .icon {
+    transition: transform 0.3s ease;
+  }
+
+  .card-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 1.5rem;
+  }
+
+  .card-content p {
+    margin: 1rem 0;
+  }
+
+  .solution-card.open .card-content {
+    max-height: 200px;
+    padding: 1rem 1.5rem;
+  }
+
+  .solution-card.open .icon {
+    transform: rotate(45deg);
   }
 
   /* RESPONSIVE */
@@ -198,9 +279,14 @@ import Header from '../components/Header.astro';
     .soluciones-section h2 {
       font-size: 2rem;
     }
-
-	.soluciones-section p {
-		font-size: 1.1rem;
-  	}
   }
 </style>
+
+<script>
+  function toggleCard(header : HTMLElement) {
+    const card = header.closest('.solution-card');
+    if(card) {
+      card.classList.toggle('open');
+    }
+  }
+</script>
