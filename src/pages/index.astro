@@ -9,7 +9,7 @@ import Header from '../components/Header.astro';
   <head>
     <title>Tech Crew</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/global.css" />
+    <link rel="stylesheet" href="/Tech-Crew/global.css" />
   </head>
 
   <body>
@@ -17,8 +17,8 @@ import Header from '../components/Header.astro';
     <div class="hero-section">
       <img src="/Tech-Crew/mainperson.jpeg" alt="Mockup" class="hero-image" />
       <div class="hero-content">
-        <h3>Impulsamos tu presencia digital!</h3>
-        <a href="#social" class="cta-button">Conoce nuestras soluciones</a>
+        <h3>Creciendo junto a socios que quieren potenciar su marca y dar el siguiente paso hacia la presencia digital.</h3>
+        <a href="#soluciones" class="cta-button">Conocer mas</a>
       </div>
     </div>
 
@@ -61,7 +61,17 @@ import Header from '../components/Header.astro';
         <!-- Card: Despliegues -->
         <div class="solution-card">
           <div class="card-header" onclick="toggleCard(this)">
-            <span>Despliegues Cloud</span>
+            <span>Sitios web</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="card-content">
+            <p>Desplegamos tu proyecto en hosting moderno: GitHub Pages, Netlify o Vercel.</p>
+          </div>
+        </div>
+         <!-- Card: Despliegues -->
+        <div class="solution-card">
+          <div class="card-header" onclick="toggleCard(this)">
+            <span>Web Scraping</span>
             <span class="icon">+</span>
           </div>
           <div class="card-content">
@@ -136,9 +146,8 @@ import Header from '../components/Header.astro';
 
   /* REDES SOCIALES */
   .social-section {
-    background: url('/Tech-Crew/socialback.png') no-repeat center center;
     background-size: cover;
-    background-color: #131212; /* fallback color */
+    background-color: #000000; /* fallback color */
     text-align: center;
     padding: 4rem 2rem;
   }
@@ -157,9 +166,9 @@ import Header from '../components/Header.astro';
   }
 
   .social-links a {
-    color: #f1cd00;
+    color: #f1d430;
     text-decoration: none;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: bold;
   }
 
@@ -188,7 +197,7 @@ import Header from '../components/Header.astro';
 
   .solution-card {
     background: #111;
-    border: 1px solid #333;
+    border: 1px solid #ffff5c;
     border-radius: 8px;
     margin-bottom: 1rem;
     overflow: hidden;
@@ -201,11 +210,11 @@ import Header from '../components/Header.astro';
     padding: 1rem 1.5rem;
     cursor: pointer;
     font-size: 1.5rem;
-    background: #1a1a1a;
+    background: #000000;
   }
 
   .card-header:hover {
-    background: #222;
+    background: #38331c;
   }
 
   .icon {
