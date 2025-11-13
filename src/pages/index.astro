@@ -17,24 +17,27 @@ import Header from '../components/Header.astro';
     <div class="hero-section">
       <img src="/Tech-Crew/mainperson.jpeg" alt="Mockup" class="hero-image" />
       <div class="hero-content">
-        <h3>Creciendo junto a socios que quieren potenciar su marca y dar el siguiente paso hacia la presencia digital.</h3>
+        <h3>Potenciamos productos digitalmente mientras crecemos juntos</h3>
         <a href="#soluciones" class="cta-button">Conocer mas</a>
       </div>
     </div>
 
     <!-- SECCIÓN DE REDES SOCIALES -->
     <section class="social-section" id="social">
-      <h4>Redes sociales</h4>
-      <div class="social-links">
-        <a href="https://instagram.com/tuusuario" target="_blank">Instagram</a>
-        <a href="https://www.tiktok.com/es/" target="_blank">TikTok</a>
-        <a href="https://wa.me/506XXXXXXXX" target="_blank">WhatsApp</a>
+      <h3>Socios</h3>
+      <div class="socios-section">
+        <img src="automercado.png" alt="Automercado" width="150" />
+        <img src="gymshark.jpg" alt="Gymshark" width="150" />
+        <img src="smartfit.png" alt="Smartfit" width="150" />
+        <img src="chery.png" alt="Chery" width="150" />
+        <img src="muscletech.jpg" alt="Muscletech" width="150" />
+        <img src="BYD.jpg" alt="Byd" width="150" />
       </div>
     </section>
 
     <!-- SECCIÓN DE SOLUCIONES -->
     <section class="soluciones-section" id="soluciones">
-      <h2>Nuestras Soluciones</h2>
+      <h3>Nuestras Soluciones</h3>
       <div class="solution-cards">
         <!-- Card: Landing Pages -->
         <div class="solution-card">
@@ -61,7 +64,7 @@ import Header from '../components/Header.astro';
         <!-- Card: Despliegues -->
         <div class="solution-card">
           <div class="card-header" onclick="toggleCard(this)">
-            <span>Sitios web</span>
+            <span>Sitios web estaticos</span>
             <span class="icon">+</span>
           </div>
           <div class="card-content">
@@ -71,7 +74,7 @@ import Header from '../components/Header.astro';
          <!-- Card: Despliegues -->
         <div class="solution-card">
           <div class="card-header" onclick="toggleCard(this)">
-            <span>Web Scraping</span>
+            <span>Digitalizacion para emprendedores</span>
             <span class="icon">+</span>
           </div>
           <div class="card-content">
@@ -128,10 +131,23 @@ import Header from '../components/Header.astro';
     margin-bottom: 2rem;
   }
 
+  .social-section h3 {
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .soluciones-section h3 {
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
   .cta-button {
     background-color: #f1cd00;
     border: none;
-    padding: 1rem 2rem;
+    padding: 1.2rem 3.7rem;
+    margin-top: 3.5rem;
     font-size: 1.7rem;
     color: black;
     cursor: pointer;
@@ -158,10 +174,11 @@ import Header from '../components/Header.astro';
     font-weight: bold;
   }
 
-  .social-links {
+  .socios-section {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    margin-top: 6em;
+    gap: 7.5rem;
     flex-wrap: wrap;
   }
 
