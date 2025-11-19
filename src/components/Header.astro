@@ -1,142 +1,67 @@
 <header class="header">
-   <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Tech Crew</title>
-      <link rel="stylesheet" href="/Tech-Crew/global.css">
-    </head>
 
-   <div class="logo">
-     <img src="/Tech-Crew/tc.png" alt="Logo de Tech Crew" />
-   </div>
- </header>
- 
- <style>
-   @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100&display=swap');
- 
-   body {
-     margin: 0;
-     font-family: 'Geist', sans-serif;
-     background: black;
-     color: white;
-   }
- 
-   .header {
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-     padding: 0.2rem 1.8rem;
-     background-color: black;
-     border-bottom: 1px solid #000;
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 100%;
-     z-index: 1000;
-   }
-   
-   .bandera img {
-     height: 90px;
-     margin-right: 25px;
-   }
+  <div class="header-left">
+    <img src="/Tech-Crew/tc.png" alt="Logo de Tech Crew" class="logo">
+  </div>
 
-   .logo {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     width: 100%;
-   }
- 
-   .logo img {
-     height: 140px;
-     margin: 0;
-     display:block;
-   }
- 
-   .menu-toggle {
-     display: none;
-     background: none;
-     border: none;
-     cursor: pointer;
-     z-index: 1001;
-   }
- 
-   .nav-container {
-     display: flex;
-   }
- 
-   .nav-links {
-     list-style: none;
-     display: flex;
-     gap: 2.7rem;
-     padding: 0;
-     margin: 0;
-     align-items: center;
-   }
- 
-   .nav-links a {
-     text-decoration: none;
-     color: #ffffff;
-     font-size: 35px;
-     margin-right: 150px;
-     padding-bottom: 5px;
-     border-bottom: 1px solid transparent;
-     transition: border-bottom-color 0.3s ease;
-   }
- 
-   .nav-links a:hover {
-     color: #d4d4bf;
-     border-bottom-color: #f1cd00;
-   }
- 
-   /* ------------------ Responsive ------------------ */
-   @media (max-width: 768px) {
-     .header {
-       flex-wrap: wrap;
-     }
- 
-     .menu-toggle {
-       display: block;
-       padding-right: 5rem;
-     }
- 
-     .nav-container {
-       display: none;
-       width: 100%;
-     }
- 
-     .nav-container.active {
-       display: flex;
-       justify-content: center;
-     }
- 
-     .nav-links {
-       flex-direction: column;
-       align-items: center;
-       width: 100%;
-       gap: 1rem;
-       margin-top: 1rem;
-     }
- 
-     .nav-links a {
-       font-size: 20px;
-     }
- 
-     .logo img {
-       height: 80px;
-     }
-   }
- </style>
- 
- <script>
-   document.addEventListener('DOMContentLoaded', () => {
-     const toggle = document.getElementById('menu-toggle');
-     const nav = document.getElementById('nav');
- 
-     if (toggle && nav) {
-       toggle.addEventListener('click', () => {
-         nav.classList.toggle('active');
-       });
-     }
-   });
- </script>
- 
+  <div class="header-right">
+    <a id="open-modal-btn" class="contact-button">Consultas</a>
+  </div>
+</header>
+
+<style>
+/* ---------- ESTILOS GENERALES ---------- */
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Logo izquierda, botón derecha */
+  align-items: center;
+  padding: 1rem 2rem;
+  background: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+
+/* ---------- LOGO ---------- */
+
+.logo {
+  height: 140px;
+  display: block;
+}
+
+
+/* ---------- CONTENEDOR DEL BOTÓN ---------- */
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+/* ---------- BOTÓN ---------- */
+
+.contact-button {
+  background-color: #f1cd00;
+  padding: 0.9rem 2rem;
+  margin-right: 15rem;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  color: black;
+  cursor: pointer;
+}
+
+.contact-button:hover {
+    background-color: #fdf6f6;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+</style>

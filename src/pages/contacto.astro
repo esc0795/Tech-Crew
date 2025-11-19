@@ -1,36 +1,68 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import Header from '../components/Header.astro';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2rHvBEtzMtESSKIcC4JSYcFFoyP3rByyLstLGHn7-HvBPUBaKFzui7txX8f9N64TL/exec';
 ---
-<Header />
 
-<html>
-  <head>
-    <title>Tech Crew - Contacto</title>
-	<link rel="stylesheet" href="/Tech-Crew/global.css">
-  </head>
-  <body>
-  </body>
-</html>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100&display=swap');
-	
-    h3 {
-		text-decoration: none;
-       	color: #ffffff;
-       	font-family: 'Geist', sans-serif;
-       	font-size: 50px;
-		margin-left: 425px;
-		margin-top: 150px;
-	}
+<section>
+  <h2>Contacto</h2>
 
-    h5 {
-		text-decoration: none;
-       	color: #fffb00;
-       	font-family: 'Geist', sans-serif;
-       	font-size: 50px;
-		margin-left: 470px;
-		margin-top: 50px;
-	}
-</style>
+  <form id="contact-form">
+    <label>
+      Nombre
+      <input type="text" name="nombre" required />
+    </label>
+
+    <label>
+      Correo electronico
+      <input type="email" name="email" required />
+    </label>
+
+    <label>
+      Telefono
+      <input type="tel" name="telefono" required />
+    </label>
+
+    <label>
+      Mensaje
+      <textarea name="mensaje" rows="4" required></textarea>
+    </label>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <p id="form-status"></p>
+</section>
+
+<script type="module">
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2rHvBEtzMtESSKIcC4JSYcFFoyP3rByyLstLGHn7-HvBPUBaKFzui7txX8f9N64TL/exec';
+
+  const form = document.querySelector('#contact-form');
+  const statusEl = document.querySelector('#form-status');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    statusEl.textContent = 'Enviando...';
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const res = await fetch(SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (!res.ok) {
+        throw new Error('Error en la respuesta del servidor');
+      }
+
+      statusEl.textContent = 'Gracias! Hemos recibido tu mensaje, pronto te contactaremos.';
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      statusEl.textContent = 'Ocurrió un error al enviar. Intenta de nuevo.';
+    }
+  });
+</script>

@@ -7,18 +7,17 @@ import Header from '../components/Header.astro';
 
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>Tech Crew</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />\
     <link rel="stylesheet" href="/Tech-Crew/global.css" />
   </head>
 
   <body>
     <!-- HERO PRINCIPAL -->
     <div class="hero-section">
-      <img src="/Tech-Crew/mainperson.jpeg" alt="Mockup" class="hero-image" />
       <div class="hero-content">
-        <h3>Potenciamos productos digitalmente mientras crecemos juntos</h3>
-        <a href="#soluciones" class="cta-button">Conocer mas</a>
+        <a href="#soluciones" id="cta-button" class="cta-button">Conocer mas</a>
       </div>
     </div>
 
@@ -46,7 +45,7 @@ import Header from '../components/Header.astro';
             <span class="icon">+</span>
           </div>
           <div class="card-content">
-            <p>Diseñamos páginas de aterrizaje optimizadas para captar clientes potenciales y aumentar conversiones.</p>
+            <p>Disenamos landing pages optimizadas para captar clientes potenciales y aumentar conversiones.</p>
           </div>
         </div>
 
@@ -57,18 +56,18 @@ import Header from '../components/Header.astro';
             <span class="icon">+</span>
           </div>
           <div class="card-content">
-            <p>Posicionamos tu web para aparecer primero en Google y atraer tráfico de calidad.</p>
+            <p>Posicionamos tu web para aparecer primero en Google y atraer trafico de calidad.</p>
           </div>
         </div>
 
         <!-- Card: Despliegues -->
         <div class="solution-card">
           <div class="card-header" onclick="toggleCard(this)">
-            <span>Sitios web estaticos</span>
+            <span>Sitios web</span>
             <span class="icon">+</span>
           </div>
           <div class="card-content">
-            <p>Desplegamos tu proyecto en hosting moderno: GitHub Pages, Netlify o Vercel.</p>
+            <p>Crecion de sitios web segun necesidades del cliente.</p>
           </div>
         </div>
          <!-- Card: Despliegues -->
@@ -78,11 +77,44 @@ import Header from '../components/Header.astro';
             <span class="icon">+</span>
           </div>
           <div class="card-content">
-            <p>Desplegamos tu proyecto en hosting moderno: GitHub Pages, Netlify o Vercel.</p>
+            <p>Orientamos el camino de tu negocio hacia la digitalizacion, basados en el bajo costo por trafico controlado.</p>
           </div>
         </div>
       </div>
     </section>
+    <!-- Modal Overlay -->
+  <div id="contact-modal" class="modal-overlay">
+    <div class="modal-content">
+     <button class="modal-close" id="modal-close">X</button>
+    
+      <h2>Contactanos</h2>
+
+      <form id="modal-contact-form">
+       <label>
+          Nombre
+          <input type="text" name="nombre" required>
+        </label>
+
+        <label>
+          Correo electronico
+          <input type="email" name="email" required>
+        </label>
+
+        <label>
+          Whatsapp/Telefono
+          <input type="tel" name="telefono" required>
+        </label>
+
+        <label>
+          Mensaje
+          <textarea name="mensaje" rows="4" required></textarea>
+        </label>
+
+        <button type="submit" class="send-btn">Enviar</button>
+      </form>
+      <p id="modal-status" style="margin-top:10px; color:#f5c400;"></p>
+    </div>
+  </div>
   </body>
 </html>
 
@@ -106,9 +138,18 @@ import Header from '../components/Header.astro';
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 7% 2rem;
-    background-color: black;
+    margin-top: 9.6rem;
+    padding: 9% 2rem;
+    background-color: #000;
     flex-wrap: wrap;
+    background-image: url("/Tech-Crew/imgbcknd.png");
+    background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding-left: 5em;
+    width: 100%;
+    height:20em;
+    text-align: justify;
   }
 
   .hero-image {
@@ -120,15 +161,15 @@ import Header from '../components/Header.astro';
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items:center;
     max-width: 50%;
-    color: white;
+    color: rgb(255, 255, 255);
   }
 
   .hero-content h3 {
-    font-size: 3rem;
-    font-weight: 300;
-    margin-bottom: 2rem;
+    font-size: 6.5rem;
+    font-weight: 900;
+    padding-bottom: 2rem;
   }
 
   .social-section h3 {
@@ -146,9 +187,12 @@ import Header from '../components/Header.astro';
   .cta-button {
     background-color: #f1cd00;
     border: none;
-    padding: 1.2rem 3.7rem;
-    margin-top: 3.5rem;
-    font-size: 1.7rem;
+    padding: 1.5rem 1.7rem;
+    width: 7em;
+    margin-right:44em;
+    margin-top: 15rem;
+    font-size: 1.8rem;
+    font-weight: bold;
     color: black;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -258,6 +302,99 @@ import Header from '../components/Header.astro';
     transform: rotate(45deg);
   }
 
+  /* Overlay oscuro */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Caja del modal */
+.modal-content {
+  background: #111;
+  color: #fff;
+  padding: 2rem;
+  margin-top: 180px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+  animation: modalPop .35s ease;
+}
+
+@keyframes modalPop {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Botón cerrar */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Inputs */
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: .7rem;
+  margin-top: .3rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 6px;
+  background: #222;
+  color: #fff;
+}
+
+/* Botón enviar */
+.send-btn {
+  background: #f5c400;
+  color: #000;
+  padding: .8rem 1.6rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  transition: opacity .2s ease;
+}
+
+.send-btn:hover {
+  opacity: 0.8;
+  background-color: #fdf6f6;
+}
+
+/* Oculto */
+.hidden {
+  display: none;
+}
+
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     .hero-section {
@@ -308,11 +445,80 @@ import Header from '../components/Header.astro';
   }
 </style>
 
-<script>
-  function toggleCard(header : HTMLElement) {
+<script type="module">
+  // ---------------------------
+  // Toggle de tarjetas
+  // ---------------------------
+  function toggleCard(header) {
     const card = header.closest('.solution-card');
-    if(card) {
+    if (card) {
       card.classList.toggle('open');
     }
   }
+  window.toggleCard = toggleCard;
+
+
+  // ---------------------------
+  // Modal
+  // ---------------------------
+  const openBtn = document.querySelector('#open-modal-btn');
+  const modal = document.querySelector('#contact-modal');
+  const closeBtn = document.querySelector('#modal-close');
+  const form = document.querySelector('#modal-contact-form');
+  const statusEl = document.querySelector('#modal-status');
+
+  openBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    modal.classList.add("active");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.classList.remove("active");
+  });
+
+
+  // ---------------------------
+  // Google Sheets
+  // ---------------------------
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz8YJmjhHiEXD-o3iYDErabiZ-vZITA7lXqTtAIUVHJL9hyDw4ATbqY7YX8FYEInsWW/exec";
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    statusEl.textContent = "Enviando...";
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const res = await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) throw new Error("Error en servidor AS");
+
+      statusEl.textContent = "Mensaje enviado! Pronto te contactaremos";
+
+      form.reset();
+
+      setTimeout(() => {
+        modal.classList.remove("active");
+        statusEl.textContent = "";
+      }, 1500);
+
+    } catch (err) {
+      console.error(err);
+      statusEl.textContent = "Error al enviar. Intenta de nuevo.";
+    }
+  });
 </script>
+
+
