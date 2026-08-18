@@ -1,41 +1,69 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
 ---
-
-<Header />
 
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Tech Crew</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/Tech-Crew/global.css" />
   </head>
 
   <body>
+    <Header />
+    <!-- FONDO GLOBAL ANIMADO -->
+    <canvas id="global-canvas"></canvas>
+
     <!-- HERO PRINCIPAL -->
     <div class="hero-section">
       <div class="hero-content">
         <h3>
-          CRECEMOS<br>
-          INCENTIVANDO<br>
+          CRECEMOS<br />
+          INCENTIVANDO<br />
           A CRECER
         </h3>
-        <a href="#soluciones" id="cta-button" class="cta-button">Conocer mas</a>
+        <a href="#soluciones" id="cta-button" class="cta-button"
+          >Conocer m&aacute;s</a
+        >
       </div>
     </div>
 
-    <!-- SECCIÓN DE REDES SOCIALES -->
-    <section class="social-section" id="social">
-      <h3>Socios</h3>
-      <div class="socios-section">
-        <img src="automercado.png" alt="Automercado" width="150" />
-        <img src="gymshark.jpg" alt="Gymshark" width="150" />
-        <img src="smartfit.png" alt="Smartfit" width="150" />
-        <img src="chery.png" alt="Chery" width="150" />
-        <img src="muscletech.jpg" alt="Muscletech" width="150" />
-        <img src="BYD.jpg" alt="Byd" width="150" />
+    <!-- NUEVO CATÁLOGO DE SERVICIOS -->
+    <section class="catalog-section" id="catalogo">
+      <div class="catalog-slider">
+        <div class="catalog-card">
+          <h4>Automatizaciones con IA</h4>
+          <p>
+            Integraci&oacute;n de agentes inteligentes y procesos
+            autom&aacute;ticos para hacer tu negocio m&aacute;s &aacute;gil.
+          </p>
+        </div>
+
+        <div class="catalog-card">
+          <h4>Transformaci&oacute;n digital</h4>
+          <p>
+            Moderniza las herramientas y estrategias para destacar en el
+            ecosistema digital actual.
+          </p>
+        </div>
+
+        <div class="catalog-card">
+          <h4>Por qu&eacute; es importante el SEO</h4>
+          <p>
+            Posicionamiento org&aacute;nico y visibilidad en buscadores para que
+            te encuentren primero.
+          </p>
+        </div>
+
+        <div class="catalog-card">
+          <h4>Optimizaci&oacute;n de ventas en l&iacute;nea</h4>
+          <p>
+            Estrategias probadas para maximizar conversiones y mejorar la
+            experiencia de usuario.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -50,7 +78,10 @@ import Header from '../components/Header.astro';
             <span class="icon">+</span>
           </div>
           <div class="card-content">
-            <p>Disenamos landing pages optimizadas para captar clientes potenciales y aumentar conversiones.</p>
+            <p>
+              Dise&ntilde;amos landing pages optimizadas para captar clientes
+              potenciales y aumentar conversiones.
+            </p>
           </div>
         </div>
 
@@ -61,65 +92,75 @@ import Header from '../components/Header.astro';
             <span class="icon">+</span>
           </div>
           <div class="card-content">
-            <p>Posicionamos tu web para aparecer primero en Google y atraer trafico de calidad.</p>
+            <p>
+              Posicionamos tu web para aparecer primero en Google y atraer
+              tr&aacute;fico de calidad.
+            </p>
           </div>
         </div>
 
-        <!-- Card: Despliegues -->
+        <!-- Card: Sitios Web -->
         <div class="solution-card">
           <div class="card-header" onclick="toggleCard(this)">
             <span>Sitios web</span>
             <span class="icon">+</span>
           </div>
           <div class="card-content">
-            <p>Crecion de sitios web segun necesidades del cliente.</p>
+            <p>
+              Creaci&oacute;n de sitios web seg&uacute;n necesidades del
+              cliente.
+            </p>
           </div>
         </div>
-         <!-- Card: Despliegues -->
+        <!-- Card: Digitalización -->
         <div class="solution-card">
           <div class="card-header" onclick="toggleCard(this)">
-            <span>Digitalizacion para emprendedores</span>
+            <span>Digitalizaci&oacute;n para emprendedores</span>
             <span class="icon">+</span>
           </div>
           <div class="card-content">
-            <p>Orientamos el camino de tu negocio hacia la digitalizacion, basados en el bajo costo por trafico controlado.</p>
+            <p>
+              Orientamos el camino de tu negocio hacia la digitalizaci&oacute;n,
+              basados en el bajo costo por tr&aacute;fico controlado.
+            </p>
           </div>
         </div>
       </div>
     </section>
+
     <!-- Modal Overlay -->
-  <div id="contact-modal" class="modal-overlay">
-    <div class="modal-content">
-     <button class="modal-close" id="modal-close">X</button>
-    
-      <h2>Contactanos</h2>
+    <div id="contact-modal" class="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close" id="modal-close">X</button>
 
-      <form id="modal-contact-form">
-       <label>
-          Nombre
-          <input type="text" name="nombre" required>
-        </label>
+        <h2>Cont&aacute;ctanos</h2>
 
-        <label>
-          Correo electronico
-          <input type="email" name="email" required>
-        </label>
+        <form id="modal-contact-form">
+          <label>
+            Nombre
+            <input type="text" name="nombre" required />
+          </label>
 
-        <label>
-          Whatsapp/Telefono
-          <input type="tel" name="telefono" required>
-        </label>
+          <label>
+            Correo electr&oacute;nico
+            <input type="email" name="email" required />
+          </label>
 
-        <label>
-          Mensaje
-          <textarea name="mensaje" rows="4" required></textarea>
-        </label>
+          <label>
+            WhatsApp/Tel&eacute;fono
+            <input type="tel" name="telefono" required />
+          </label>
 
-        <button type="submit" class="send-btn">Enviar</button>
-      </form>
-      <p id="modal-status" style="margin-top:10px; color:#f5c400;"></p>
+          <label>
+            Mensaje
+            <textarea name="mensaje" rows="4" required></textarea>
+          </label>
+
+          <button type="submit" class="send-btn">Enviar</button>
+        </form>
+        <p id="modal-status" style="margin-top:10px; color:#f5c400;"></p>
+      </div>
     </div>
-  </div>
   </body>
 </html>
 
@@ -128,33 +169,43 @@ import Header from '../components/Header.astro';
     scroll-behavior: smooth;
   }
 
-  @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100&display=swap");
 
   body {
     margin: 0;
-    font-family: 'Geist', sans-serif;
+    font-family: "Geist", sans-serif;
     background: #000;
     color: #fff;
   }
 
   /* HERO */
   .hero-section {
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     margin-top: 5rem;
     padding: 9% 2rem;
-    background-color: #000;
+    background-color: transparent;
     flex-wrap: wrap;
-    background-image: url("/Tech-Crew/imgbcknd.png");
-    background-size: cover;
-    background-position: left center;
-    background-repeat: no-repeat;
     padding-left: 5em;
     width: 100%;
-    height:40em;
+    height: 40em;
     text-align: justify;
+  }
+
+  #global-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background: #000;
   }
 
   .hero-image {
@@ -163,10 +214,12 @@ import Header from '../components/Header.astro';
   }
 
   .hero-content {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items:flex-start;
+    align-items: flex-start;
     margin-left: 22.5em;
     margin-top: -12em;
     max-width: 60%;
@@ -181,12 +234,6 @@ import Header from '../components/Header.astro';
     padding-bottom: 2rem;
   }
 
-  .social-section h3 {
-    font-size: 3rem;
-    font-weight: 300;
-    margin-bottom: 2rem;
-  }
-
   .soluciones-section h3 {
     font-size: 3rem;
     font-weight: 300;
@@ -194,66 +241,124 @@ import Header from '../components/Header.astro';
   }
 
   .cta-button {
-    background-color: #f1cd00;
-    border: none;
-    padding: 1.2rem 2rem;
-    font-size: 1.6rem;
+    position: relative;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid #f1cd00;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.4rem;
     font-weight: bold;
-    color: black;
+    color: #f1cd00;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
+    transition: all 0.4s ease;
+    border-radius: 50px;
     text-decoration: none;
-
-    /* ELIMINAR LOS VALORES QUE DAÑABAN LA POSICIÓN */
+    text-transform: uppercase;
+    letter-spacing: 2px;
     margin: 0;
     width: auto;
-
-    /* BOTÓN A LA IZQUIERDA */
     align-self: flex-start;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    box-shadow:
+      0 0 10px rgba(241, 205, 0, 0.2),
+      inset 0 0 10px rgba(241, 205, 0, 0.1);
   }
 
+  .cta-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+  }
 
   .cta-button:hover {
-    background-color: #fdf6f6;
+    background-color: #f1cd00;
+    color: #000;
+    box-shadow:
+      0 0 20px rgba(241, 205, 0, 0.6),
+      0 0 40px rgba(241, 205, 0, 0.4);
+    transform: translateY(-3px);
   }
 
-  /* REDES SOCIALES */
-  .social-section {
-    background-size: cover;
-    background-color: #000000; /* fallback color */
+  .cta-button:hover::after {
+    left: 150%;
+  }
+
+  /* NUEVO CATÁLOGO DE SERVICIOS */
+  .catalog-section {
+    position: relative;
+    z-index: 10;
+    overflow: visible; /* Or visible if we want no cutoff at all */
+    background: transparent;
+    padding: 6rem 2rem;
     text-align: center;
-    padding: 4rem 2rem;
   }
 
-  .social-section h4 {
-    font-size: 2.9rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-  }
-
-  .socios-section {
+  .catalog-slider {
+    position: relative;
+    z-index: 1;
     display: flex;
+    overflow-x: auto;
+    gap: 2rem;
+    padding-top: 10px; /* Previene el corte del hover superior */
+    padding-bottom: 2rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  .catalog-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .catalog-card {
+    flex: 0 0 300px;
+    background: #050505;
+    border: 1px solid rgba(241, 205, 0, 0.4); /* Línea amarilla muy delgada */
+    border-radius: 8px;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-top: 6em;
-    gap: 4rem;
-    flex-wrap: wrap;
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease;
   }
 
-  .social-links a {
-    color: #f1d430;
-    text-decoration: none;
-    font-size: 2rem;
+  .catalog-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(241, 205, 0, 1);
+  }
+
+  .catalog-card h4 {
+    font-size: 1.5rem;
     font-weight: bold;
+    margin-bottom: 1rem;
+    color: #f1cd00;
   }
 
-  .social-links a:hover {
-    color: #ffffff;
+  .catalog-card p {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+    line-height: 1.5;
   }
 
   /* SOLUCIONES */
   .soluciones-section {
-    background: #000;
+    position: relative;
+    z-index: 10;
+    background: transparent;
     color: white;
     text-align: center;
     padding: 6rem 2rem;
@@ -299,7 +404,9 @@ import Header from '../components/Header.astro';
   .card-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
+    transition:
+      max-height 0.3s ease,
+      padding 0.3s ease;
     padding: 0 1.5rem;
   }
 
@@ -327,7 +434,7 @@ import Header from '../components/Header.astro';
     z-index: 999;
     opacity: 0;
     pointer-events: none;
-    transition: opacity .3s ease;
+    transition: opacity 0.3s ease;
   }
 
   .modal-overlay.active {
@@ -346,19 +453,19 @@ import Header from '../components/Header.astro';
     max-width: 450px;
     position: relative;
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
-    animation: modalPop .35s ease;
+    animation: modalPop 0.35s ease;
   }
 
-@keyframes modalPop {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
+  @keyframes modalPop {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
 
   /* Botón cerrar */
   .modal-close {
@@ -376,8 +483,8 @@ import Header from '../components/Header.astro';
   .modal-content input,
   .modal-content textarea {
     width: 100%;
-    padding: .7rem;
-    margin-top: .3rem;
+    padding: 0.7rem;
+    margin-top: 0.3rem;
     margin-bottom: 1rem;
     border: none;
     border-radius: 6px;
@@ -385,17 +492,17 @@ import Header from '../components/Header.astro';
     color: #fff;
   }
 
-/* Botón enviar */
+  /* Botón enviar */
   .send-btn {
     background: #f5c400;
     color: #000;
-    padding: .8rem 1.6rem;
+    padding: 0.8rem 1.6rem;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
     width: 100%;
-    transition: opacity .2s ease;
+    transition: opacity 0.2s ease;
   }
 
   .send-btn:hover {
@@ -407,7 +514,6 @@ import Header from '../components/Header.astro';
   .hidden {
     display: none;
   }
-
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
@@ -434,27 +540,24 @@ import Header from '../components/Header.astro';
       font-size: 1.2rem;
       padding: 1rem 2rem;
       width: auto;
-    
+
       /* CENTRADO EN MÓVIL */
       align-self: center;
       margin: 1rem 0;
     }
 
-    .social-section {
+    .catalog-section {
       padding: 3rem 1rem;
     }
 
-    .social-section h4 {
-      font-size: 2rem;
+    .catalog-slider {
+      gap: 1.5rem;
+      padding-bottom: 1rem;
     }
 
-    .social-links {
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .social-links a {
-      font-size: 1.2rem;
+    .catalog-card {
+      flex: 0 0 260px; /* Tarjetas más pequeñas en móvil */
+      padding: 1.5rem;
     }
 
     .soluciones-section h2 {
@@ -465,25 +568,86 @@ import Header from '../components/Header.astro';
 
 <script type="module">
   // ---------------------------
+  // Canvas Tech Animation
+  // ---------------------------
+  const canvas = document.getElementById("global-canvas");
+  if (canvas) {
+    const ctx = canvas.getContext("2d");
+    let width, height;
+    let particles = [];
+
+    function initCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      particles = [];
+      const numParticles = Math.floor((width * height) / 8000);
+      for (let i = 0; i < numParticles; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 1.2,
+          vy: (Math.random() - 0.5) * 1.2,
+          radius: Math.random() * 2 + 1,
+        });
+      }
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = "rgba(241, 205, 0, 0.8)";
+      ctx.lineWidth = 0.5;
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dist = Math.sqrt((p.x - p2.x) ** 2 + (p.y - p2.y) ** 2);
+          if (dist < 120) {
+            ctx.strokeStyle = `rgba(241, 205, 0, ${1 - dist / 120})`;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(drawParticles);
+    }
+
+    initCanvas();
+    drawParticles();
+    window.addEventListener("resize", initCanvas);
+  }
+
+  // ---------------------------
   // Toggle de tarjetas
   // ---------------------------
   function toggleCard(header) {
-    const card = header.closest('.solution-card');
+    const card = header.closest(".solution-card");
     if (card) {
-      card.classList.toggle('open');
+      card.classList.toggle("open");
     }
   }
   window.toggleCard = toggleCard;
 
-
   // ---------------------------
   // Modal
   // ---------------------------
-  const openBtn = document.querySelector('#open-modal-btn');
-  const modal = document.querySelector('#contact-modal');
-  const closeBtn = document.querySelector('#modal-close');
-  const form = document.querySelector('#modal-contact-form');
-  const statusEl = document.querySelector('#modal-status');
+  const openBtn = document.querySelector("#open-modal-btn");
+  const modal = document.querySelector("#contact-modal");
+  const closeBtn = document.querySelector("#modal-close");
+  const form = document.querySelector("#modal-contact-form");
+  const statusEl = document.querySelector("#modal-status");
 
   openBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -498,11 +662,11 @@ import Header from '../components/Header.astro';
     if (e.target === modal) modal.classList.remove("active");
   });
 
-
   // ---------------------------
   // Google Sheets
   // ---------------------------
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz8YJmjhHiEXD-o3iYDErabiZ-vZITA7lXqTtAIUVHJL9hyDw4ATbqY7YX8FYEInsWW/exec";
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbz8YJmjhHiEXD-o3iYDErabiZ-vZITA7lXqTtAIUVHJL9hyDw4ATbqY7YX8FYEInsWW/exec";
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -516,7 +680,7 @@ import Header from '../components/Header.astro';
       const res = await fetch(SCRIPT_URL, {
         method: "POST",
         headers: {
-          "Content-Type": "text/plain;charset=utf-8"
+          "Content-Type": "text/plain;charset=utf-8",
         },
         body: JSON.stringify(data),
       });
@@ -531,12 +695,9 @@ import Header from '../components/Header.astro';
         modal.classList.remove("active");
         statusEl.textContent = "";
       }, 1500);
-
     } catch (err) {
       console.error(err);
       statusEl.textContent = "Error al enviar. Intenta de nuevo.";
     }
   });
 </script>
-
-

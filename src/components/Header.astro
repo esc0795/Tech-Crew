@@ -1,7 +1,8 @@
 <header class="header">
-
   <div class="header-left">
-    <img src="/Tech-Crew/tc.png" alt="Logo de Tech Crew" class="logo">
+    <a href="/Tech-Crew/">
+      <img src="/Tech-Crew/tc.png" alt="Logo de Tech Crew" class="logo" />
+    </a>
   </div>
 
   <div class="header-right">
@@ -10,64 +11,97 @@
 </header>
 
 <style>
-/* ---------- ESTILOS GENERALES ---------- */
+  /* ---------- ESTILOS GENERALES ---------- */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgb(0, 0, 0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
 
-.header {
-  display: flex;
-  justify-content: space-between; /* Logo izquierda, botón derecha */
-  align-items: center;
-  padding: 1rem 2rem;
-  background: rgb(0, 0, 0);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  border-color: #2220205e;
-  border-style: solid;
-  border-left: black;
-  border-top: black;
-  border-right: black;
-  border-width: 0.1cap;
-}
+  /* ---------- LOGO ---------- */
+  .logo {
+    height: 135px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    transition:
+      transform 0.3s ease,
+      filter 0.3s ease;
+  }
 
+  .logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.8));
+  }
 
-/* ---------- LOGO ---------- */
+  /* ---------- CONTENEDOR DEL BOTÓN ---------- */
+  .header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 
-.logo {
-  height: 115px;
-  display: block;
-}
+  /* ---------- BOTÓN ---------- */
+  .contact-button {
+    position: relative;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1.5px solid #f1cd00;
+    padding: 0.7rem 1.8rem;
+    margin-right: 15rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    color: #f1cd00;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    box-shadow:
+      0 0 8px rgba(241, 205, 0, 0.2),
+      inset 0 0 8px rgba(241, 205, 0, 0.1);
+  }
 
+  .contact-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+  }
 
-/* ---------- CONTENEDOR DEL BOTÓN ---------- */
+  .contact-button:hover {
+    background-color: #f1cd00;
+    color: #000;
+    box-shadow:
+      0 0 15px rgba(241, 205, 0, 0.6),
+      0 0 30px rgba(241, 205, 0, 0.4);
+    transform: translateY(-2px);
+  }
 
-.header-right {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
+  .contact-button:hover::after {
+    left: 150%;
+  }
 
-
-/* ---------- BOTÓN ---------- */
-
-.contact-button {
-  background-color: #f1cd00;
-  padding: 0.9rem 2rem;
-  margin-right: 15rem;
-  font-size: 1.1rem;
-  border-radius: 6px;
-  color: black;
-  cursor: pointer;
-}
-
-.contact-button:hover {
-    background-color: #fdf6f6;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-}
+  a {
+    text-decoration: none;
+    font-weight: bold;
+  }
 </style>
