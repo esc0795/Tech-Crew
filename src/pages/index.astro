@@ -152,8 +152,14 @@ import Header from "../components/Header.astro";
           </label>
 
           <label>
-            Mensaje
-            <textarea name="mensaje" rows="4" required></textarea>
+            Medio de contacto de preferencia
+            <select name="medio_contacto" required>
+              <option value="" disabled selected
+                >Seleccione una opci&oacute;n</option
+              >
+              <option value="WhatsApp">WhatsApp</option>
+              <option value="Correo">Correo Electr&oacute;nico</option>
+            </select>
           </label>
 
           <button type="submit" class="send-btn">Enviar</button>
@@ -182,19 +188,13 @@ import Header from "../components/Header.astro";
   .hero-section {
     position: relative;
     z-index: 10;
-    overflow: hidden;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
-    margin-top: 5rem;
-    padding: 9% 2rem;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 2rem;
     background-color: transparent;
-    flex-wrap: wrap;
-    padding-left: 5em;
-    width: 100%;
-    height: 40em;
-    text-align: justify;
+    text-align: center;
   }
 
   #global-canvas {
@@ -208,11 +208,6 @@ import Header from "../components/Header.astro";
     background: #000;
   }
 
-  .hero-image {
-    max-width: 45%;
-    margin-right: 5%;
-  }
-
   .hero-content {
     position: relative;
     z-index: 1;
@@ -220,18 +215,18 @@ import Header from "../components/Header.astro";
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin-left: 22.5em;
-    margin-top: -12em;
-    max-width: 60%;
+    max-width: 800px;
+    margin: 0 auto;
     color: rgb(255, 255, 255);
-    gap: 0.3rem;
-    margin-bottom: 10em;
+    gap: 1.5rem;
+    text-align: left;
   }
 
   .hero-content h3 {
-    font-size: 4rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 900;
-    padding-bottom: 2rem;
+    line-height: 1.2;
+    margin: 0;
   }
 
   .soluciones-section h3 {
@@ -256,7 +251,6 @@ import Header from "../components/Header.astro";
     letter-spacing: 2px;
     margin: 0;
     width: auto;
-    align-self: flex-start;
     overflow: hidden;
     backdrop-filter: blur(5px);
     box-shadow:
@@ -314,6 +308,9 @@ import Header from "../components/Header.astro";
     padding-bottom: 2rem;
     scrollbar-width: none;
     -ms-overflow-style: none; /* IE and Edge */
+    width: max-content;
+    max-width: 100%;
+    margin: 0 auto;
   }
 
   .catalog-slider::-webkit-scrollbar {
@@ -427,11 +424,12 @@ import Header from "../components/Header.astro";
   .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999;
+    z-index: 9999;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
@@ -444,15 +442,22 @@ import Header from "../components/Header.astro";
 
   /* Caja del modal */
   .modal-content {
-    background: #111;
+    box-sizing: border-box;
+    background: rgba(10, 10, 10, 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(241, 205, 0, 0.2);
     color: #fff;
-    padding: 2rem;
-    margin-top: 180px;
-    border-radius: 10px;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
     width: 90%;
-    max-width: 450px;
+    max-width: 400px;
+    max-height: 85vh;
+    overflow-y: auto;
     position: relative;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 0 40px rgba(0, 0, 0, 0.8),
+      inset 0 0 20px rgba(255, 255, 255, 0.05);
     animation: modalPop 0.35s ease;
   }
 
@@ -481,15 +486,43 @@ import Header from "../components/Header.astro";
 
   /* Inputs */
   .modal-content input,
+  .modal-content select,
   .modal-content textarea {
+    box-sizing: border-box;
     width: 100%;
     padding: 0.7rem;
     margin-top: 0.3rem;
     margin-bottom: 1rem;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 6px;
-    background: #222;
+    background: rgba(255, 255, 255, 0.05);
     color: #fff;
+    transition:
+      border-color 0.3s ease,
+      background 0.3s ease;
+  }
+
+  .modal-content select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+  }
+
+  .modal-content select option {
+    background: #111;
+    color: #fff;
+  }
+
+  .modal-content input:focus,
+  .modal-content select:focus,
+  .modal-content textarea:focus {
+    outline: none;
+    border-color: #f1cd00;
+    background: rgba(255, 255, 255, 0.1);
   }
 
   /* Botón enviar */
@@ -515,35 +548,18 @@ import Header from "../components/Header.astro";
     display: none;
   }
 
-  /* RESPONSIVE */
   @media (max-width: 768px) {
     .hero-section {
-      flex-direction: column;
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-
-    .hero-image {
-      max-width: 100%;
-      margin-bottom: 2rem;
-    }
-
-    .hero-content {
-      align-items: center;
+      padding: 6rem 1rem 3rem 1rem;
     }
 
     .hero-content h3 {
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
 
     .cta-button {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       padding: 1rem 2rem;
-      width: auto;
-
-      /* CENTRADO EN MÓVIL */
-      align-self: center;
-      margin: 1rem 0;
     }
 
     .catalog-section {
