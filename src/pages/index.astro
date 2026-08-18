@@ -192,9 +192,10 @@ import Header from "../components/Header.astro";
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 0 2rem;
+    padding: 120px 2rem 2rem 2rem; /* Adds top space to prevent hiding under header */
     background-color: transparent;
     text-align: center;
+    box-sizing: border-box;
   }
 
   #global-canvas {
@@ -301,26 +302,20 @@ import Header from "../components/Header.astro";
   .catalog-slider {
     position: relative;
     z-index: 1;
-    display: flex;
-    overflow-x: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
-    padding-top: 10px; /* Previene el corte del hover superior */
+    padding-top: 10px;
     padding-bottom: 2rem;
-    scrollbar-width: none;
-    -ms-overflow-style: none; /* IE and Edge */
-    width: max-content;
-    max-width: 100%;
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
-  }
-
-  .catalog-slider::-webkit-scrollbar {
-    display: none;
+    box-sizing: border-box;
   }
 
   .catalog-card {
-    flex: 0 0 300px;
     background: #050505;
-    border: 1px solid rgba(241, 205, 0, 0.4); /* Línea amarilla muy delgada */
+    border: 1px solid rgba(241, 205, 0, 0.4);
     border-radius: 8px;
     padding: 2.5rem 1.5rem;
     text-align: center;
@@ -374,7 +369,7 @@ import Header from "../components/Header.astro";
 
   .solution-card {
     background: #111;
-    border: 1px solid #ffff5c;
+    border: 1px solid rgba(241, 205, 0, 0.5); /* Signature yellow, half transparent for elegance */
     border-radius: 8px;
     margin-bottom: 1rem;
     overflow: hidden;
@@ -578,6 +573,10 @@ import Header from "../components/Header.astro";
 
     .soluciones-section h2 {
       font-size: 2rem;
+    }
+
+    .solution-card {
+      border: 1px solid rgba(241, 205, 0, 0.2); /* Much softer on mobile as requested */
     }
   }
 </style>

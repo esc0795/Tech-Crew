@@ -6,7 +6,7 @@
   </div>
 
   <div class="header-right">
-    <a id="open-modal-btn" class="contact-button">Consultas</a>
+    <a id="open-modal-btn" class="contact-button">Contacto</a>
   </div>
 </header>
 
@@ -23,11 +23,12 @@
     left: 0;
     width: 100%;
     z-index: 1000;
+    box-sizing: border-box; /* Crucial for safe responsive padding */
   }
 
   /* ---------- LOGO ---------- */
   .logo {
-    height: 135px;
+    height: 75px; /* Standarized elegant size */
     width: auto;
     display: block;
     object-fit: contain;
@@ -54,7 +55,7 @@
     background: rgba(0, 0, 0, 0.3);
     border: 1.5px solid #f1cd00;
     padding: 0.7rem 1.8rem;
-    margin-right: 15rem;
+    margin-right: 0; /* Align naturally based on flex container */
     font-size: 1.1rem;
     border-radius: 50px;
     color: #f1cd00;
@@ -103,5 +104,21 @@
   a {
     text-decoration: none;
     font-weight: bold;
+  }
+
+  /* REGLA RESPONSIVA PARA HEADER */
+  @media (max-width: 768px) {
+    .header {
+      padding: 0.8rem 1rem;
+    }
+    .logo {
+      height: 50px;
+    }
+    .contact-button {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      border-width: 1px;
+    }
   }
 </style>
