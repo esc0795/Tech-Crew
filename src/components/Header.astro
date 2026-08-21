@@ -1,40 +1,6 @@
 <header class="header">
   <div class="header-left">
-    <button
-      id="menu-toggle-btn"
-      class="hamburger-btn"
-      aria-label="Abrir menú de navegación"
-      aria-expanded="false"
-      aria-controls="nav-dropdown"
-    >
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-    </button>
-
-    <!-- Menú desplegable interactivo con 3 opciones dummy -->
-    <nav id="nav-dropdown" class="nav-dropdown" aria-label="Navegación principal">
-      <ul class="nav-menu-list">
-        <li class="nav-menu-item">
-          <a href="#opcion1" class="nav-menu-link">
-            <span class="link-bullet"></span>
-            <span>Opción 1</span>
-          </a>
-        </li>
-        <li class="nav-menu-item">
-          <a href="#opcion2" class="nav-menu-link">
-            <span class="link-bullet"></span>
-            <span>Opción 2</span>
-          </a>
-        </li>
-        <li class="nav-menu-item">
-          <a href="#opcion3" class="nav-menu-link">
-            <span class="link-bullet"></span>
-            <span>Opción 3</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <!-- Espacio reservado a la izquierda -->
   </div>
 
   <div class="header-center">
@@ -69,140 +35,13 @@
     overflow: visible; /* Permite que el logo centrado sobresalga libremente */
   }
 
-  /* ---------- ZONA IZQUIERDA: MENÚ HAMBURGUESA ---------- */
+  /* ---------- ZONA IZQUIERDA ---------- */
   .header-left {
     display: flex;
     align-items: center;
     position: relative;
     z-index: 1005;
     flex: 1;
-  }
-
-  .hamburger-btn {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 44px;
-    height: 44px;
-    background: rgba(241, 205, 0, 0.05);
-    border: 1.5px solid rgba(241, 205, 0, 0.35);
-    border-radius: 8px;
-    padding: 10px 8px;
-    cursor: pointer;
-    box-sizing: border-box;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(6px);
-    box-shadow: 0 0 10px rgba(241, 205, 0, 0.12);
-  }
-
-  .hamburger-btn:hover {
-    background: rgba(241, 205, 0, 0.15);
-    border-color: #f1cd00;
-    box-shadow: 0 0 16px rgba(241, 205, 0, 0.4);
-    transform: scale(1.04);
-  }
-
-  .hamburger-bar {
-    width: 100%;
-    height: 2.5px;
-    background-color: #f1cd00;
-    border-radius: 2px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-origin: center;
-  }
-
-  /* Animación a 'X' del botón hamburguesa */
-  .hamburger-btn.active .hamburger-bar:nth-child(1) {
-    transform: translateY(7.5px) rotate(45deg);
-  }
-
-  .hamburger-btn.active .hamburger-bar:nth-child(2) {
-    opacity: 0;
-    transform: scaleX(0);
-  }
-
-  .hamburger-btn.active .hamburger-bar:nth-child(3) {
-    transform: translateY(-7.5px) rotate(-45deg);
-  }
-
-  /* ---------- MENÚ DESPLEGABLE / DROPDOWN ---------- */
-  .nav-dropdown {
-    position: absolute;
-    top: calc(100% + 14px);
-    left: 0;
-    min-width: 220px;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(241, 205, 0, 0.35);
-    border-radius: 12px;
-    padding: 0.6rem 0;
-    box-shadow:
-      0 15px 35px rgba(0, 0, 0, 0.85),
-      0 0 20px rgba(241, 205, 0, 0.15);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px) scale(0.96);
-    transition:
-      opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-      transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-      visibility 0.25s;
-    pointer-events: none;
-    z-index: 1010;
-  }
-
-  .nav-dropdown.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
-    pointer-events: auto;
-  }
-
-  .nav-menu-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .nav-menu-item {
-    margin: 0;
-  }
-
-  .nav-menu-link {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.85rem 1.4rem;
-    color: #e0e0e0;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: all 0.25s ease;
-    border-left: 3px solid transparent;
-  }
-
-  .link-bullet {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: rgba(241, 205, 0, 0.4);
-    transition: all 0.25s ease;
-  }
-
-  .nav-menu-link:hover {
-    color: #f1cd00;
-    background: rgba(241, 205, 0, 0.08);
-    border-left-color: #f1cd00;
-    padding-left: 1.6rem;
-  }
-
-  .nav-menu-link:hover .link-bullet {
-    background-color: #f1cd00;
-    box-shadow: 0 0 8px #f1cd00;
-    transform: scale(1.3);
   }
 
   /* ---------- ZONA CENTRAL: LOGO CENTRADO Y SUPERPUESTO ---------- */
@@ -320,25 +159,6 @@
       height: 105px; /* Superpuesto más grande en tablet */
     }
 
-    .hamburger-btn {
-      width: 40px;
-      height: 40px;
-      padding: 8px 7px;
-    }
-
-    .hamburger-btn.active .hamburger-bar:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .hamburger-btn.active .hamburger-bar:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    .nav-dropdown {
-      min-width: 190px;
-      top: calc(100% + 10px);
-    }
-
     .contact-button {
       padding: 0.5rem 0.9rem;
       font-size: 0.85rem;
@@ -362,12 +182,6 @@
       max-width: 160px;
     }
 
-    .hamburger-btn {
-      width: 36px;
-      height: 36px;
-      padding: 8px 6px;
-    }
-
     .contact-button {
       padding: 0.4rem 0.75rem;
       font-size: 0.78rem;
@@ -375,65 +189,3 @@
     }
   }
 </style>
-
-<script>
-  function setupMenu() {
-    const menuToggle = document.getElementById("menu-toggle-btn");
-    const navDropdown = document.getElementById("nav-dropdown");
-
-    if (!menuToggle || !navDropdown) return;
-
-    // Toggle menu
-    menuToggle.onclick = (e) => {
-      e.stopPropagation();
-      const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
-      const newState = !isExpanded;
-
-      menuToggle.setAttribute("aria-expanded", String(newState));
-      menuToggle.classList.toggle("active", newState);
-      navDropdown.classList.toggle("active", newState);
-    };
-
-    // Close on link click
-    const links = navDropdown.querySelectorAll(".nav-menu-link");
-    links.forEach((link) => {
-      link.addEventListener("click", () => {
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.classList.remove("active");
-        navDropdown.classList.remove("active");
-      });
-    });
-
-    // Close on outside click
-    document.addEventListener("click", (event) => {
-      const target = event.target as Node;
-      if (
-        navDropdown.classList.contains("active") &&
-        !navDropdown.contains(target) &&
-        !menuToggle.contains(target)
-      ) {
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.classList.remove("active");
-        navDropdown.classList.remove("active");
-      }
-    });
-
-    // Close on Escape key
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && navDropdown.classList.contains("active")) {
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.classList.remove("active");
-        navDropdown.classList.remove("active");
-        menuToggle.focus();
-      }
-    });
-  }
-
-  // Setup on page loads
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupMenu);
-  } else {
-    setupMenu();
-  }
-  document.addEventListener("astro:page-load", setupMenu);
-</script>
