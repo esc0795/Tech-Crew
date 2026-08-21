@@ -1,6 +1,44 @@
 <header class="header">
   <div class="header-left">
-    <a href="/Tech-Crew/">
+    <button
+      id="menu-toggle-btn"
+      class="hamburger-btn"
+      aria-label="Abrir menú de navegación"
+      aria-expanded="false"
+      aria-controls="nav-dropdown"
+    >
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+
+    <!-- Menú desplegable interactivo con 3 opciones dummy -->
+    <nav id="nav-dropdown" class="nav-dropdown" aria-label="Navegación principal">
+      <ul class="nav-menu-list">
+        <li class="nav-menu-item">
+          <a href="#opcion1" class="nav-menu-link">
+            <span class="link-bullet"></span>
+            <span>Opción 1</span>
+          </a>
+        </li>
+        <li class="nav-menu-item">
+          <a href="#opcion2" class="nav-menu-link">
+            <span class="link-bullet"></span>
+            <span>Opción 2</span>
+          </a>
+        </li>
+        <li class="nav-menu-item">
+          <a href="#opcion3" class="nav-menu-link">
+            <span class="link-bullet"></span>
+            <span>Opción 3</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="header-center">
+    <a href="/Tech-Crew/" class="logo-link" aria-label="Tech Crew Inicio">
       <img src="/Tech-Crew/tc.png" alt="Logo de Tech Crew" class="logo" />
     </a>
   </div>
@@ -11,51 +49,215 @@
 </header>
 
 <style>
-  /* ---------- ESTILOS GENERALES ---------- */
+  /* ---------- ESTILOS GENERALES DEL HEADER ---------- */
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background: rgb(0, 0, 0);
+    padding: 0 2rem;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    height: 75px; /* Altura estandarizada del componente menú */
     z-index: 1000;
-    box-sizing: border-box; /* Crucial for safe responsive padding */
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(241, 205, 0, 0.15);
+    overflow: visible; /* Permite que el logo centrado sobresalga libremente */
   }
 
-  /* ---------- LOGO ---------- */
+  /* ---------- ZONA IZQUIERDA: MENÚ HAMBURGUESA ---------- */
+  .header-left {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1005;
+    flex: 1;
+  }
+
+  .hamburger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 44px;
+    height: 44px;
+    background: rgba(241, 205, 0, 0.05);
+    border: 1.5px solid rgba(241, 205, 0, 0.35);
+    border-radius: 8px;
+    padding: 10px 8px;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 10px rgba(241, 205, 0, 0.12);
+  }
+
+  .hamburger-btn:hover {
+    background: rgba(241, 205, 0, 0.15);
+    border-color: #f1cd00;
+    box-shadow: 0 0 16px rgba(241, 205, 0, 0.4);
+    transform: scale(1.04);
+  }
+
+  .hamburger-bar {
+    width: 100%;
+    height: 2.5px;
+    background-color: #f1cd00;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+  }
+
+  /* Animación a 'X' del botón hamburguesa */
+  .hamburger-btn.active .hamburger-bar:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+  }
+
+  .hamburger-btn.active .hamburger-bar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .hamburger-btn.active .hamburger-bar:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+  }
+
+  /* ---------- MENÚ DESPLEGABLE / DROPDOWN ---------- */
+  .nav-dropdown {
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 0;
+    min-width: 220px;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(241, 205, 0, 0.35);
+    border-radius: 12px;
+    padding: 0.6rem 0;
+    box-shadow:
+      0 15px 35px rgba(0, 0, 0, 0.85),
+      0 0 20px rgba(241, 205, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.96);
+    transition:
+      opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 0.25s;
+    pointer-events: none;
+    z-index: 1010;
+  }
+
+  .nav-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .nav-menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-menu-item {
+    margin: 0;
+  }
+
+  .nav-menu-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.4rem;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.25s ease;
+    border-left: 3px solid transparent;
+  }
+
+  .link-bullet {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(241, 205, 0, 0.4);
+    transition: all 0.25s ease;
+  }
+
+  .nav-menu-link:hover {
+    color: #f1cd00;
+    background: rgba(241, 205, 0, 0.08);
+    border-left-color: #f1cd00;
+    padding-left: 1.6rem;
+  }
+
+  .nav-menu-link:hover .link-bullet {
+    background-color: #f1cd00;
+    box-shadow: 0 0 8px #f1cd00;
+    transform: scale(1.3);
+  }
+
+  /* ---------- ZONA CENTRAL: LOGO CENTRADO Y SUPERPUESTO ---------- */
+  .header-center {
+    position: absolute;
+    left: 50%;
+    top: 15px; /* Separación de 15px de la parte superior de la web */
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1002;
+    pointer-events: auto;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  /* Logo agrandado y superpuesto */
   .logo {
-    height: 75px; /* Standarized elegant size */
+    height: 140px; /* Altura ajustada a 140px */
     width: auto;
     display: block;
     object-fit: contain;
+    filter: drop-shadow(0px 6px 16px rgba(0, 0, 0, 0.9));
     transition:
-      transform 0.3s ease,
-      filter 0.3s ease;
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .logo:hover {
     transform: scale(1.05);
-    filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.8));
+    filter: drop-shadow(0px 0px 25px rgba(241, 205, 0, 0.8)) drop-shadow(0px 6px 16px rgba(0, 0, 0, 0.9));
   }
 
-  /* ---------- CONTENEDOR DEL BOTÓN ---------- */
+  /* ---------- ZONA DERECHA: BOTÓN DE CONTACTO ---------- */
   .header-right {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    flex: 1;
+    position: relative;
+    z-index: 1005;
   }
 
-  /* ---------- BOTÓN ---------- */
   .contact-button {
     position: relative;
     background: rgba(0, 0, 0, 0.3);
     border: 1.5px solid #f1cd00;
     padding: 0.7rem 1.8rem;
-    margin-right: 0; /* Align naturally based on flex container */
+    margin-right: 0;
     font-size: 1.1rem;
     border-radius: 50px;
     color: #f1cd00;
@@ -69,6 +271,8 @@
     box-shadow:
       0 0 8px rgba(241, 205, 0, 0.2),
       inset 0 0 8px rgba(241, 205, 0, 0.1);
+    text-decoration: none;
+    display: inline-block;
   }
 
   .contact-button::after {
@@ -101,24 +305,135 @@
     left: 150%;
   }
 
-  a {
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  /* REGLA RESPONSIVA PARA HEADER */
+  /* ---------- REGLAS RESPONSIVAS ---------- */
   @media (max-width: 768px) {
     .header {
-      padding: 0.8rem 1rem;
+      height: 65px;
+      padding: 0 1.2rem;
     }
+
+    .header-center {
+      top: 10px;
+    }
+
     .logo {
-      height: 50px;
+      height: 105px; /* Superpuesto más grande en tablet */
     }
+
+    .hamburger-btn {
+      width: 40px;
+      height: 40px;
+      padding: 8px 7px;
+    }
+
+    .hamburger-btn.active .hamburger-bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger-btn.active .hamburger-bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .nav-dropdown {
+      min-width: 190px;
+      top: calc(100% + 10px);
+    }
+
     .contact-button {
-      padding: 0.5rem 0.8rem;
+      padding: 0.5rem 0.9rem;
       font-size: 0.85rem;
       letter-spacing: 0.5px;
       border-width: 1px;
     }
   }
+
+  @media (max-width: 480px) {
+    .header {
+      height: 60px;
+      padding: 0 0.8rem;
+    }
+
+    .header-center {
+      top: 8px;
+    }
+
+    .logo {
+      height: 88px; /* Superpuesto más grande en móvil */
+      max-width: 160px;
+    }
+
+    .hamburger-btn {
+      width: 36px;
+      height: 36px;
+      padding: 8px 6px;
+    }
+
+    .contact-button {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.3px;
+    }
+  }
 </style>
+
+<script>
+  function setupMenu() {
+    const menuToggle = document.getElementById("menu-toggle-btn");
+    const navDropdown = document.getElementById("nav-dropdown");
+
+    if (!menuToggle || !navDropdown) return;
+
+    // Toggle menu
+    menuToggle.onclick = (e) => {
+      e.stopPropagation();
+      const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+      const newState = !isExpanded;
+
+      menuToggle.setAttribute("aria-expanded", String(newState));
+      menuToggle.classList.toggle("active", newState);
+      navDropdown.classList.toggle("active", newState);
+    };
+
+    // Close on link click
+    const links = navDropdown.querySelectorAll(".nav-menu-link");
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.classList.remove("active");
+        navDropdown.classList.remove("active");
+      });
+    });
+
+    // Close on outside click
+    document.addEventListener("click", (event) => {
+      const target = event.target as Node;
+      if (
+        navDropdown.classList.contains("active") &&
+        !navDropdown.contains(target) &&
+        !menuToggle.contains(target)
+      ) {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.classList.remove("active");
+        navDropdown.classList.remove("active");
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && navDropdown.classList.contains("active")) {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.classList.remove("active");
+        navDropdown.classList.remove("active");
+        menuToggle.focus();
+      }
+    });
+  }
+
+  // Setup on page loads
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupMenu);
+  } else {
+    setupMenu();
+  }
+  document.addEventListener("astro:page-load", setupMenu);
+</script>
