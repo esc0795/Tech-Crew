@@ -1,16 +1,25 @@
 <header class="header">
   <div class="header-left">
-    <!-- Espacio reservado a la izquierda -->
-  </div>
-
-  <div class="header-center">
     <a href="/Tech-Crew/" class="logo-link" aria-label="Tech Crew Inicio">
       <img src="/Tech-Crew/tc.png" alt="Logo de Tech Crew" class="logo" />
     </a>
   </div>
 
   <div class="header-right">
-    <a id="open-modal-btn" class="contact-button">Contacto</a>
+    <!-- Enlace directo a WhatsApp: Puedes configurar tu número (ej: https://wa.me/506XXXXXXXX?text=...) -->
+    <a
+      id="header-whatsapp-btn"
+      href="https://wa.me/?text=Hola%20Tech%20Crew,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20soluciones%20digitales"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="whatsapp-btn"
+      aria-label="Iniciar chat por WhatsApp"
+    >
+      <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.97.527 1.834.78 2.796.78 3.184 0 5.77-2.587 5.77-5.766.001-3.187-2.575-5.77-5.77-5.77zm0 10.457c-.854 0-1.636-.237-2.316-.649l-.166-.1-1.581.415.422-1.541-.109-.174c-.452-.721-.69-1.564-.69-2.428 0-2.493 2.029-4.521 4.523-4.521 2.494 0 4.524 2.028 4.525 4.521 0 2.495-2.03 4.524-4.524 4.524zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.662 1.438 5.18L2 22l4.975-1.305A9.957 9.957 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+      </svg>
+      <span class="whatsapp-text">Chat por WhatsApp</span>
+    </a>
   </div>
 </header>
 
@@ -32,27 +41,16 @@
     z-index: 1000;
     box-sizing: border-box;
     border-bottom: 1px solid rgba(241, 205, 0, 0.15);
-    overflow: visible; /* Permite que el logo centrado sobresalga libremente */
+    overflow: visible; /* Permite que el logo sobresalga y flote libremente */
   }
 
-  /* ---------- ZONA IZQUIERDA ---------- */
+  /* ---------- ZONA IZQUIERDA: LOGO SUPERPUESTO (140px, top 15px) ---------- */
   .header-left {
-    display: flex;
-    align-items: center;
-    position: relative;
-    z-index: 1005;
-    flex: 1;
-  }
-
-  /* ---------- ZONA CENTRAL: LOGO CENTRADO Y SUPERPUESTO ---------- */
-  .header-center {
     position: absolute;
-    left: 50%;
-    top: 15px; /* Separación de 15px de la parte superior de la web */
-    transform: translateX(-50%);
+    left: 2rem;
+    top: 15px; /* Separación de 15px del borde superior */
     display: flex;
     align-items: center;
-    justify-content: center;
     z-index: 1002;
     pointer-events: auto;
   }
@@ -60,13 +58,12 @@
   .logo-link {
     display: flex;
     align-items: center;
-    justify-content: center;
     text-decoration: none;
   }
 
-  /* Logo agrandado y superpuesto */
+  /* Logo agrandado y superpuesto a la izquierda */
   .logo {
-    height: 140px; /* Altura ajustada a 140px */
+    height: 140px; /* Medida original de 140px */
     width: auto;
     display: block;
     object-fit: contain;
@@ -81,40 +78,49 @@
     filter: drop-shadow(0px 0px 25px rgba(241, 205, 0, 0.8)) drop-shadow(0px 6px 16px rgba(0, 0, 0, 0.9));
   }
 
-  /* ---------- ZONA DERECHA: BOTÓN DE CONTACTO ---------- */
+  /* ---------- ZONA DERECHA: BOTÓN CHAT POR WHATSAPP ---------- */
   .header-right {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    flex: 1;
+    margin-left: auto;
     position: relative;
     z-index: 1005;
   }
 
-  .contact-button {
+  .whatsapp-btn {
     position: relative;
-    background: rgba(0, 0, 0, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    background: rgba(0, 0, 0, 0.4);
     border: 1.5px solid #f1cd00;
-    padding: 0.7rem 1.8rem;
-    margin-right: 0;
-    font-size: 1.1rem;
+    padding: 0.65rem 1.6rem;
+    font-size: 1rem;
     border-radius: 50px;
     color: #f1cd00;
     cursor: pointer;
     transition: all 0.4s ease;
-    font-weight: bold;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     overflow: hidden;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(6px);
     box-shadow:
-      0 0 8px rgba(241, 205, 0, 0.2),
-      inset 0 0 8px rgba(241, 205, 0, 0.1);
+      0 0 10px rgba(241, 205, 0, 0.2),
+      inset 0 0 10px rgba(241, 205, 0, 0.08);
     text-decoration: none;
-    display: inline-block;
   }
 
-  .contact-button::after {
+  .whatsapp-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .whatsapp-btn::after {
     content: "";
     position: absolute;
     top: 0;
@@ -131,16 +137,20 @@
     transition: left 0.6s ease;
   }
 
-  .contact-button:hover {
+  .whatsapp-btn:hover {
     background-color: #f1cd00;
     color: #000;
     box-shadow:
-      0 0 15px rgba(241, 205, 0, 0.6),
-      0 0 30px rgba(241, 205, 0, 0.4);
+      0 0 18px rgba(241, 205, 0, 0.6),
+      0 0 35px rgba(241, 205, 0, 0.4);
     transform: translateY(-2px);
   }
 
-  .contact-button:hover::after {
+  .whatsapp-btn:hover .whatsapp-icon {
+    transform: scale(1.15);
+  }
+
+  .whatsapp-btn:hover::after {
     left: 150%;
   }
 
@@ -151,19 +161,24 @@
       padding: 0 1.2rem;
     }
 
-    .header-center {
+    .header-left {
+      left: 1.2rem;
       top: 10px;
     }
 
     .logo {
-      height: 105px; /* Superpuesto más grande en tablet */
+      height: 105px; /* Medida superpuesta en tablet */
     }
 
-    .contact-button {
-      padding: 0.5rem 0.9rem;
+    .whatsapp-btn {
+      padding: 0.5rem 1.1rem;
       font-size: 0.85rem;
-      letter-spacing: 0.5px;
-      border-width: 1px;
+      gap: 0.45rem;
+    }
+
+    .whatsapp-icon {
+      width: 17px;
+      height: 17px;
     }
   }
 
@@ -173,19 +188,25 @@
       padding: 0 0.8rem;
     }
 
-    .header-center {
+    .header-left {
+      left: 0.8rem;
       top: 8px;
     }
 
     .logo {
-      height: 88px; /* Superpuesto más grande en móvil */
+      height: 88px; /* Medida superpuesta en móvil */
       max-width: 160px;
     }
 
-    .contact-button {
-      padding: 0.4rem 0.75rem;
+    .whatsapp-btn {
+      padding: 0.45rem 0.85rem;
       font-size: 0.78rem;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.5px;
+    }
+
+    .whatsapp-icon {
+      width: 15px;
+      height: 15px;
     }
   }
 </style>
