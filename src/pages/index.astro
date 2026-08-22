@@ -1,11 +1,12 @@
 ---
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Tech Crew</title>
+    <title>Tech Crew - CR</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/Tech-Crew/tc.png" />
     <link rel="shortcut icon" type="image/png" href="/Tech-Crew/tc.png" />
@@ -556,26 +557,26 @@ import Header from "../components/Header.astro";
           </button>
         </form>
 
+        <!-- ESTADO DE CARGA: AGENDANDO EN SEGUNDO PLANO -->
+        <div id="schedule-loading-card" class="schedule-loading-card hidden">
+          <div class="schedule-spinner"></div>
+          <h3>Agendando llamada...</h3>
+          <p id="schedule-loading-details">
+            Sincronizando evento en Google Calendar con ambos correos.
+          </p>
+          <div class="loading-progress-badge">
+            <span class="loading-pulse"></span>
+            <span>Creando evento en agenda...</span>
+          </div>
+        </div>
+
+        <!-- ESTADO DE ÉXITO: EVENTO CREADO + BOTÓN WHATSAPP -->
         <div id="schedule-success-card" class="schedule-success-card hidden">
           <div class="success-icon">&#10003;</div>
           <h3>&iexcl;Llamada Agendada con &Eacute;xito!</h3>
           <p id="schedule-success-details"></p>
 
           <div class="calendar-action-buttons">
-            <a
-              id="gcal-add-btn"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="gcal-btn"
-            >
-              <svg class="gcal-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
-                ></path>
-              </svg>
-              <span>A&ntilde;adir a Google Calendar</span>
-            </a>
-
             <a
               id="whatsapp-confirm-btn"
               target="_blank"
@@ -599,6 +600,9 @@ import Header from "../components/Header.astro";
         </p>
       </div>
     </div>
+
+    <!-- FOOTER -->
+    <Footer />
   </body>
 </html>
 
@@ -1253,9 +1257,78 @@ import Header from "../components/Header.astro";
   }
 
   /* Success Card & Calendar Action Buttons */
+  /* Loading Card */
+  .schedule-loading-card {
+    text-align: center;
+    padding: 2.2rem 1rem 1.5rem 1rem;
+    animation: modalPop 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .schedule-spinner {
+    width: 52px;
+    height: 52px;
+    border: 3px solid rgba(241, 205, 0, 0.15);
+    border-top: 3px solid #f1cd00;
+    border-right: 3px solid #f1cd00;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+    margin-bottom: 1.4rem;
+    box-shadow: 0 0 25px rgba(241, 205, 0, 0.35);
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .schedule-loading-card h3 {
+    font-size: 1.35rem;
+    color: #ffffff;
+    margin: 0 0 0.6rem 0;
+  }
+
+  .schedule-loading-card p {
+    font-size: 0.92rem;
+    color: #a8a8a8;
+    line-height: 1.5;
+    margin: 0 0 1.2rem 0;
+    max-width: 380px;
+  }
+
+  .loading-progress-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(241, 205, 0, 0.08);
+    border: 1px solid rgba(241, 205, 0, 0.25);
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.84rem;
+    color: #f1cd00;
+  }
+
+  .loading-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f1cd00;
+    box-shadow: 0 0 8px #f1cd00;
+    animation: pulse 1.2s infinite ease-in-out;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(0.85); opacity: 0.6; }
+    50% { transform: scale(1.2); opacity: 1; }
+  }
+
+  /* Success Card & Calendar Action Buttons */
   .schedule-success-card {
     text-align: center;
-    padding: 1.2rem 0.5rem 0.5rem 0.5rem;
+    padding: 1.8rem 0.5rem 0.8rem 0.5rem;
     animation: modalPop 0.35s ease;
   }
 
@@ -1263,29 +1336,30 @@ import Header from "../components/Header.astro";
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 54px;
-    height: 54px;
-    background: rgba(241, 205, 0, 0.15);
-    border: 2px solid #f1cd00;
+    width: 58px;
+    height: 58px;
+    background: rgba(37, 211, 102, 0.15);
+    border: 2px solid #25d366;
     border-radius: 50%;
-    color: #f1cd00;
-    font-size: 1.8rem;
+    color: #25d366;
+    font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 1rem;
-    box-shadow: 0 0 20px rgba(241, 205, 0, 0.4);
+    margin-bottom: 1.2rem;
+    box-shadow: 0 0 25px rgba(37, 211, 102, 0.4);
+    animation: pulse 2s infinite ease-in-out;
   }
 
   .schedule-success-card h3 {
-    font-size: 1.4rem;
+    font-size: 1.45rem;
     color: #ffffff;
     margin: 0 0 0.6rem 0;
   }
 
   .schedule-success-card p {
     font-size: 0.95rem;
-    color: #ccc;
-    line-height: 1.5;
-    margin: 0 0 1.5rem 0;
+    color: #d0d0d0;
+    line-height: 1.6;
+    margin: 0 0 1.6rem 0;
   }
 
   .hidden {
@@ -1298,58 +1372,34 @@ import Header from "../components/Header.astro";
     gap: 0.8rem;
   }
 
-  .gcal-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-    background: #f1cd00;
-    color: #000;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    padding: 0.9rem 1.4rem;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(241, 205, 0, 0.3);
-  }
-
-  .gcal-btn:hover {
-    background: #fff;
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
-    transform: translateY(-2px);
-  }
-
-  .gcal-icon {
-    width: 20px;
-    height: 20px;
-  }
-
   .wa-confirm-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
-    background: rgba(37, 211, 102, 0.15);
-    border: 1.5px solid #25d366;
-    color: #25d366;
-    font-weight: 700;
-    padding: 0.8rem 1.4rem;
-    border-radius: 8px;
+    gap: 0.75rem;
+    background: #25d366;
+    color: #000000;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
     text-decoration: none;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    cursor: pointer;
   }
 
   .wa-confirm-btn:hover {
-    background: #25d366;
-    color: #000;
+    background: #20ba59;
+    color: #ffffff;
     transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
   }
 
   .wa-icon {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
   }
 
   @keyframes modalPop {
@@ -1511,7 +1561,9 @@ import Header from "../components/Header.astro";
   // ---------------------------
   // Canvas Tech Animation
   // ---------------------------
-  const canvas = document.getElementById("global-canvas") as HTMLCanvasElement | null;
+  const canvas = document.getElementById(
+    "global-canvas",
+  ) as HTMLCanvasElement | null;
   if (canvas) {
     const ctx = canvas.getContext("2d");
     let width = (canvas.width = window.innerWidth);
@@ -1591,7 +1643,8 @@ import Header from "../components/Header.astro";
       card.classList.toggle("open");
     }
   }
-  (window as unknown as { toggleCard: typeof toggleCard }).toggleCard = toggleCard;
+  (window as unknown as { toggleCard: typeof toggleCard }).toggleCard =
+    toggleCard;
 
   // ---------------------------
   // Modal de Contacto
@@ -1599,7 +1652,9 @@ import Header from "../components/Header.astro";
   const openContactBtn = document.querySelector<HTMLElement>("#open-modal-btn");
   const contactModal = document.querySelector<HTMLElement>("#contact-modal");
   const closeContactBtn = document.querySelector<HTMLElement>("#modal-close");
-  const contactForm = document.querySelector<HTMLFormElement>("#modal-contact-form");
+  const contactForm = document.querySelector<HTMLFormElement>(
+    "#modal-contact-form",
+  );
   const contactStatusEl = document.querySelector<HTMLElement>("#modal-status");
 
   if (openContactBtn && contactModal) {
@@ -1622,21 +1677,38 @@ import Header from "../components/Header.astro";
   }
 
   // ---------------------------
-  // Modal de Agendar Llamada + Google Calendar
+  // Modal de Agendar Llamada + Automatización
   // ---------------------------
-  const scheduleHeader = document.querySelector<HTMLElement>("#schedule-modal-header");
+  const scheduleHeader = document.querySelector<HTMLElement>(
+    "#schedule-modal-header",
+  );
   const scheduleBtn = document.querySelector<HTMLElement>("#schedule-call-btn");
   const scheduleModal = document.querySelector<HTMLElement>("#schedule-modal");
-  const closeScheduleBtn = document.querySelector<HTMLElement>("#schedule-modal-close");
-  const scheduleForm = document.querySelector<HTMLFormElement>("#schedule-call-form");
-  const scheduleDateInput = document.querySelector<HTMLInputElement>("#schedule-date");
-  const scheduleStatusEl = document.querySelector<HTMLElement>("#schedule-status");
-  const scheduleSuccessCard = document.querySelector<HTMLElement>("#schedule-success-card");
+  const closeScheduleBtn = document.querySelector<HTMLElement>(
+    "#schedule-modal-close",
+  );
+  const scheduleForm = document.querySelector<HTMLFormElement>(
+    "#schedule-call-form",
+  );
+  const scheduleDateInput =
+    document.querySelector<HTMLInputElement>("#schedule-date");
+  const scheduleStatusEl =
+    document.querySelector<HTMLElement>("#schedule-status");
+  const scheduleLoadingCard = document.querySelector<HTMLElement>(
+    "#schedule-loading-card",
+  );
+  const scheduleLoadingDetails = document.querySelector<HTMLElement>(
+    "#schedule-loading-details",
+  );
+  const scheduleSuccessCard = document.querySelector<HTMLElement>(
+    "#schedule-success-card",
+  );
   const scheduleSuccessDetails = document.querySelector<HTMLElement>(
     "#schedule-success-details",
   );
-  const gcalBtn = document.querySelector<HTMLAnchorElement>("#gcal-add-btn");
-  const waConfirmBtn = document.querySelector<HTMLAnchorElement>("#whatsapp-confirm-btn");
+  const waConfirmBtn = document.querySelector<HTMLAnchorElement>(
+    "#whatsapp-confirm-btn",
+  );
 
   // Establecer fecha mínima como hoy
   if (scheduleDateInput) {
@@ -1651,6 +1723,7 @@ import Header from "../components/Header.astro";
       scheduleModal.classList.add("active");
       if (scheduleHeader) scheduleHeader.classList.remove("hidden");
       if (scheduleForm) scheduleForm.classList.remove("hidden");
+      if (scheduleLoadingCard) scheduleLoadingCard.classList.add("hidden");
       if (scheduleSuccessCard) scheduleSuccessCard.classList.add("hidden");
       if (scheduleStatusEl) scheduleStatusEl.textContent = "";
     });
@@ -1668,64 +1741,12 @@ import Header from "../components/Header.astro";
     });
   }
 
-  interface GCalParams {
-    title: string;
-    description: string;
-    location: string;
-    startDate: Date;
-    durationMinutes?: number;
-    attendees?: string[];
-  }
-
-  // Helper para generar URL de Google Calendar con invitados vinculados
-  function generateGoogleCalendarUrl({
-    title,
-    description,
-    location,
-    startDate,
-    durationMinutes = 30,
-    attendees = [],
-  }: GCalParams): string {
-    const pad = (n: number) => String(n).padStart(2, "0");
-    const formatUtc = (d: Date) => {
-      return (
-        d.getUTCFullYear() +
-        pad(d.getUTCMonth() + 1) +
-        pad(d.getUTCDate()) +
-        "T" +
-        pad(d.getUTCHours()) +
-        pad(d.getUTCMinutes()) +
-        pad(d.getUTCSeconds()) +
-        "Z"
-      );
-    };
-
-    const endDate = new Date(startDate.getTime() + durationMinutes * 60 * 1000);
-    const startStr = formatUtc(startDate);
-    const endStr = formatUtc(endDate);
-
-    const params = new URLSearchParams({
-      action: "TEMPLATE",
-      text: title,
-      details: description,
-      location: location,
-      dates: `${startStr}/${endStr}`,
-    });
-
-    // Agregar invitados (Cliente y Tech Crew) para vincular el evento a ambos correos
-    if (attendees && attendees.length > 0) {
-      params.append("add", attendees.join(","));
-    }
-
-    return `https://calendar.google.com/calendar/render?${params.toString()}`;
-  }
-
   // ---------------------------
   // Google Sheets / Envío de Formularios
   // ---------------------------
   const CREW_EMAIL = "techcrewcr@gmail.com";
   const SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbz8YJmjhHiEXD-o3iYDErabiZ-vZITA7lXqTtAIUVHJL9hyDw4ATbqY7YX8FYEInsWW/exec";
+    "https://script.google.com/macros/s/AKfycbzq81F12upMJSBo01TFg5Xoal6vilgKObmDF8fLig_MptDY2qJz1mCmFKRqaikFA8Sruw/exec";
 
   // Envío de Formulario de Contacto
   if (contactForm) {
@@ -1734,7 +1755,10 @@ import Header from "../components/Header.astro";
       if (contactStatusEl) contactStatusEl.textContent = "Enviando...";
 
       const formData = new FormData(contactForm);
-      const data = Object.fromEntries(formData.entries()) as Record<string, string>;
+      const data = Object.fromEntries(formData.entries()) as Record<
+        string,
+        string
+      >;
 
       try {
         await fetch(SCRIPT_URL, {
@@ -1770,15 +1794,36 @@ import Header from "../components/Header.astro";
   if (scheduleForm) {
     scheduleForm.addEventListener("submit", async (event) => {
       event.preventDefault();
-      if (scheduleStatusEl)
-        scheduleStatusEl.textContent = "Agendando tu sesión...";
 
       const formData = new FormData(scheduleForm);
-      const data = Object.fromEntries(formData.entries()) as Record<string, string>;
+      const data = Object.fromEntries(formData.entries()) as Record<
+        string,
+        string
+      >;
+
+      const clientEmail = (data.email || "").trim();
+
+      // Ocultar cabecera y formulario, y mostrar el estado de carga / progreso
+      if (scheduleHeader) scheduleHeader.classList.add("hidden");
+      if (scheduleForm) scheduleForm.classList.add("hidden");
+      if (scheduleSuccessCard) scheduleSuccessCard.classList.add("hidden");
+      if (scheduleLoadingCard) scheduleLoadingCard.classList.remove("hidden");
+      if (scheduleLoadingDetails) {
+        scheduleLoadingDetails.innerHTML = `Sincronizando evento en Google Calendar con <strong>${clientEmail}</strong> y <strong>${CREW_EMAIL}</strong>...`;
+      }
+      if (scheduleStatusEl) scheduleStatusEl.textContent = "";
 
       try {
-        // Enviar datos y correos al backend de Google Apps Script
-        fetch(SCRIPT_URL, {
+        const startTime = Date.now();
+
+        // Calcular fecha y hora de la cita
+        const [year, month, day] = (data.fecha || "").split("-").map(Number);
+        const [hours, minutes] = (data.hora || "").split(":").map(Number);
+        const startDateTime = new Date(year, month - 1, day, hours, minutes);
+        const endDateTime = new Date(startDateTime.getTime() + 30 * 60 * 1000);
+
+        // Enviar datos y correos al backend de Google Apps Script con techcrewcr@gmail.com como destinatario y organizador
+        await fetch(SCRIPT_URL, {
           method: "POST",
           headers: {
             "Content-Type": "text/plain;charset=utf-8",
@@ -1787,33 +1832,32 @@ import Header from "../components/Header.astro";
             ...data,
             tipo_formulario: "Agendar Llamada",
             correo_crew: CREW_EMAIL,
-            invitados: `${data.email}, ${CREW_EMAIL}`,
+            correo_destino: CREW_EMAIL,
+            destinatario: CREW_EMAIL,
+            organizador: CREW_EMAIL,
+            cliente_email: clientEmail,
+            invitados: `${clientEmail}, ${CREW_EMAIL}`,
+            attendees: [CREW_EMAIL, clientEmail],
             evento_titulo: `Llamada de Consultoría - Tech Crew (${data.servicio_interes})`,
+            evento_descripcion: `Llamada de Consultoría Estratégica con Tech Crew.\n\n• Cliente: ${data.nombre}\n• Correo Cliente: ${clientEmail}\n• WhatsApp: ${data.telefono}\n• Servicio de Interés: ${data.servicio_interes}\n• Organizador: ${CREW_EMAIL}`,
+            fecha: data.fecha,
+            hora: data.hora,
+            fecha_inicio_iso: startDateTime.toISOString(),
+            fecha_fin_iso: endDateTime.toISOString(),
+            send_invites: true,
+            notificar: true,
           }),
-        }).catch((err) => console.warn("Registro en segundo plano:", err));
+        }).catch((err) => console.warn("Registro en Apps Script:", err));
 
-        // Calcular fecha y hora de la cita
-        const [year, month, day] = (data.fecha || "").split("-").map(Number);
-        const [hours, minutes] = (data.hora || "").split(":").map(Number);
-        const startDateTime = new Date(year, month - 1, day, hours, minutes);
+        // Garantizar que la animación de progreso se aprecie con naturalidad (mínimo 1.5s)
+        const elapsed = Date.now() - startTime;
+        if (elapsed < 1500) {
+          await new Promise((resolve) => setTimeout(resolve, 1500 - elapsed));
+        }
 
-        const clientEmail = (data.email || "").trim();
-
-        // Generar enlace de Google Calendar vinculado a ambos correos
-        const gcalUrl = generateGoogleCalendarUrl({
-          title: `Llamada de Consultoría - Tech Crew (${data.servicio_interes})`,
-          description: `Llamada estratégica con Tech Crew.\n\nCliente: ${data.nombre}\nWhatsApp: ${data.telefono}\nCorreo: ${clientEmail}\nSolución de Interés: ${data.servicio_interes}\nOrganizador: Tech Crew (${CREW_EMAIL})`,
-          location: "Google Meet",
-          startDate: startDateTime,
-          durationMinutes: 30,
-          attendees: [CREW_EMAIL, clientEmail],
-        });
-
-        if (gcalBtn) gcalBtn.href = gcalUrl;
-
-        // Generar enlace de confirmación por WhatsApp
+        // Generar enlace de confirmación por WhatsApp con mensaje estructurado
         const waText = encodeURIComponent(
-          `¡Hola Tech Crew! 👋 Acabo de agendar una llamada de consultoría para el día ${data.fecha} a las ${data.hora}.\n\nNombre: ${data.nombre}\nCorreo: ${clientEmail}\nInterés: ${data.servicio_interes}`,
+          `¡Hola Tech Crew! 👋 Acabo de agendar una llamada de consultoría para el día ${data.fecha} a las ${data.hora}.\n\n• Nombre: ${data.nombre}\n• Correo: ${clientEmail}\n• Solución: ${data.servicio_interes}\n• Evento: Agendado en Google Calendar con ${CREW_EMAIL}`,
         );
         if (waConfirmBtn) waConfirmBtn.href = `https://wa.me/?text=${waText}`;
 
@@ -1835,19 +1879,21 @@ import Header from "../components/Header.astro";
         });
 
         if (scheduleSuccessDetails) {
-          scheduleSuccessDetails.innerHTML = `<strong>${fechaLegible}</strong> a las <strong>${horaLegible}</strong><br><span style="font-size:0.88rem; color:#aaa;">Vinculado a ${clientEmail} y ${CREW_EMAIL}</span>`;
+          scheduleSuccessDetails.innerHTML = `<div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(37,211,102,0.25); border-radius: 8px; padding: 0.9rem; margin-bottom: 1.2rem; text-align: left;"><div style="color: #25d366; font-weight: 700; margin-bottom: 0.4rem;">📅 ${fechaLegible} - ${horaLegible}</div><div style="font-size: 0.85rem; color: #aaa;">✉️ Evento sincronizado en Google Calendar con <strong>${clientEmail}</strong> y <strong>${CREW_EMAIL}</strong></div></div>Haz clic abajo para enviar la confirmación inmediata por WhatsApp y coordinar los detalles.`;
         }
 
-        // Mostrar exclusivamente la tarjeta de éxito limpia (ocultando header y form)
-        if (scheduleHeader) scheduleHeader.classList.add("hidden");
-        if (scheduleForm) scheduleForm.classList.add("hidden");
+        // Ocultar tarjeta de carga y mostrar exclusivamente la tarjeta de éxito con botón verde
+        if (scheduleLoadingCard) scheduleLoadingCard.classList.add("hidden");
         if (scheduleSuccessCard) scheduleSuccessCard.classList.remove("hidden");
-        if (scheduleStatusEl) scheduleStatusEl.textContent = "";
+        scheduleForm.reset();
       } catch (err) {
         console.error(err);
+        if (scheduleLoadingCard) scheduleLoadingCard.classList.add("hidden");
+        if (scheduleForm) scheduleForm.classList.remove("hidden");
+        if (scheduleHeader) scheduleHeader.classList.remove("hidden");
         if (scheduleStatusEl)
           scheduleStatusEl.textContent =
-            "Ocurrió un error. Intenta nuevamente.";
+            "Ocurrió un error al procesar la cita. Intenta nuevamente.";
       }
     });
   }
