@@ -21,15 +21,21 @@ import Footer from "../components/Footer.astro";
 
     <!-- HERO PRINCIPAL -->
     <div class="hero-section">
-      <div class="hero-content">
-        <h3>
-          CRECEMOS<br />
-          INCENTIVANDO<br />
-          A CRECER
-        </h3>
-        <a href="#soluciones" id="cta-button" class="cta-button"
-          >Conocer m&aacute;s</a
-        >
+      <div class="hero-container">
+        <div class="hero-content">
+          <h3>
+            Llevamos tu Negocio al Mundo Digital
+          </h3>
+          <p class="hero-subtitle">
+            Sitios web r&aacute;pidos, modernos y listos para vender, dise&ntilde;ados para captar clientes y potenciar tus conversiones de forma automatizada.
+          </p>
+          <a href="#soluciones" id="cta-button" class="cta-button"
+            >Conocer m&aacute;s</a
+          >
+        </div>
+        <div class="hero-visual">
+          <img src="/Tech-Crew/tech_mockup.jpg" alt="Maqueta Digital de Sitio Web Moderno en MacBook e iPhone" class="hero-mockup-img" />
+        </div>
       </div>
     </div>
 
@@ -511,15 +517,7 @@ import Footer from "../components/Footer.astro";
             <label>
               Hora preferida *
               <select name="hora" id="schedule-time" required>
-                <option value="" disabled selected>Elige un horario</option>
-                <option value="09:00">09:00 AM</option>
-                <option value="10:00">10:00 AM</option>
-                <option value="11:00">11:00 AM</option>
-                <option value="13:00">01:00 PM</option>
-                <option value="14:00">02:00 PM</option>
-                <option value="15:00">03:00 PM</option>
-                <option value="16:00">04:00 PM</option>
-                <option value="17:00">05:00 PM</option>
+                <option value="" disabled selected>Elige una fecha primero</option>
               </select>
             </label>
           </div>
@@ -575,22 +573,6 @@ import Footer from "../components/Footer.astro";
           <div class="success-icon">&#10003;</div>
           <h3>&iexcl;Llamada Agendada con &Eacute;xito!</h3>
           <p id="schedule-success-details"></p>
-
-          <div class="calendar-action-buttons">
-            <a
-              id="whatsapp-confirm-btn"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="wa-confirm-btn"
-            >
-              <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.97.527 1.834.78 2.796.78 3.184 0 5.77-2.587 5.77-5.766.001-3.187-2.575-5.77-5.77-5.77zm0 10.457c-.854 0-1.636-.237-2.316-.649l-.166-.1-1.581.415.422-1.541-.109-.174c-.452-.721-.69-1.564-.69-2.428 0-2.493 2.029-4.521 4.523-4.521 2.494 0 4.524 2.028 4.525 4.521 0 2.495-2.03 4.524-4.524 4.524zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.662 1.438 5.18L2 22l4.975-1.305A9.957 9.957 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"
-                ></path>
-              </svg>
-              <span>Confirmar por WhatsApp</span>
-            </a>
-          </div>
         </div>
 
         <p
@@ -628,9 +610,8 @@ import Footer from "../components/Footer.astro";
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 120px 2rem 2rem 2rem; /* Adds top space to prevent hiding under header */
+    padding: 140px 2rem 4rem 2rem;
     background-color: transparent;
-    text-align: center;
     box-sizing: border-box;
   }
 
@@ -645,6 +626,16 @@ import Footer from "../components/Footer.astro";
     background: #000;
   }
 
+  .hero-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
   .hero-content {
     position: relative;
     z-index: 1;
@@ -652,18 +643,84 @@ import Footer from "../components/Footer.astro";
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    max-width: 800px;
-    margin: 0 auto;
     color: rgb(255, 255, 255);
-    gap: 1.5rem;
+    gap: 1.8rem;
     text-align: left;
   }
 
   .hero-content h3 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2.2rem, 4.5vw, 3.8rem);
     font-weight: 900;
-    line-height: 1.2;
+    line-height: 1.15;
     margin: 0;
+    max-width: 800px;
+    letter-spacing: -1.5px;
+    background: linear-gradient(135deg, #ffffff 30%, #a0a0a0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    color: #b0b0b0;
+    max-width: 650px;
+    margin: 0;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-mockup-img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    transform: perspective(1000px) rotateY(-8deg) rotateX(6deg);
+    transition: transform 0.5s ease;
+    mix-blend-mode: screen;
+    filter: brightness(0.85) contrast(1.5);
+  }
+
+  .hero-mockup-img:hover {
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.03);
+  }
+
+  /* Breakpoints responsivos */
+  @media (max-width: 968px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-mockup-img {
+      transform: none;
+      max-width: 450px;
+    }
+
+    .hero-mockup-img:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  @media (max-width: 550px) {
+    .hero-section {
+      padding-top: 110px;
+    }
+    .hero-mockup-img {
+      max-width: 100%;
+    }
   }
 
   .soluciones-section h3 {
@@ -1436,34 +1493,65 @@ import Footer from "../components/Footer.astro";
     margin-bottom: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 6px;
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
+    background-color: #121212 !important;
+    color: #ffffff !important;
+    color-scheme: dark !important;
     transition:
       border-color 0.3s ease,
-      background 0.3s ease;
+      background-color 0.3s ease;
+  }
+
+  .modal-content input:not([type="submit"]),
+  .modal-content select {
+    height: 45px;
   }
 
   .modal-content select {
     appearance: none;
     -webkit-appearance: none;
+    -moz-appearance: none;
     cursor: pointer;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     background-size: 1em;
+    padding-right: 2.5rem;
   }
 
   .modal-content select option {
-    background: #111;
-    color: #fff;
+    background-color: #f9fafb !important;
+    color: #111827 !important;
+  }
+
+  .modal-content select option:hover,
+  .modal-content select option:focus,
+  .modal-content select option:active,
+  .modal-content select option:checked {
+    background-color: #e5e7eb !important;
+    color: #000000 !important;
+  }
+
+  .modal-content select option:disabled {
+    color: #9ca3af !important;
+    background-color: #f9fafb !important;
   }
 
   .modal-content input:focus,
-  .modal-content select:focus,
   .modal-content textarea:focus {
     outline: none;
     border-color: #f1cd00;
-    background: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .modal-content select:focus,
+  .modal-content select:active,
+  .modal-content select[open],
+  .modal-content select.is-open {
+    outline: none;
+    border-color: #f1cd00;
+    background-color: #f9fafb !important;
+    color: #111827 !important;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111827' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") !important;
   }
 
   /* Botón enviar */
@@ -1709,12 +1797,168 @@ import Footer from "../components/Footer.astro";
   const waConfirmBtn = document.querySelector<HTMLAnchorElement>(
     "#whatsapp-confirm-btn",
   );
+  const scheduleTimeSelect = document.querySelector<HTMLSelectElement>(
+    "#schedule-time",
+  );
 
-  // Establecer fecha mínima como hoy
+  async function updateAvailableHours() {
+    if (!scheduleDateInput || !scheduleTimeSelect) return;
+    const selectedDate = scheduleDateInput.value;
+    if (!selectedDate) return;
+
+    // Colocar estado de carga inicial en la selección de horas
+    scheduleTimeSelect.innerHTML = '<option value="" disabled selected>Cargando disponibilidad...</option>';
+
+    let busySlots = [];
+    try {
+      const response = await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify({
+          tipo_formulario: "Obtener Disponibilidad",
+          fecha: selectedDate,
+          correo_crew: CREW_EMAIL,
+        }),
+      });
+      const resData = await response.json();
+      if (resData && resData.status === "success" && Array.isArray(resData.busySlots)) {
+        busySlots = resData.busySlots;
+      }
+    } catch (err) {
+      console.warn("No se pudo conectar al calendario en Google Apps Script, utilizando fallback de retrocompatibilidad:", err);
+    }
+
+    // Calcular día de la semana
+    const [year, month, day] = selectedDate.split("-").map(Number);
+    // Usar el mediodía (12:00:00) para evitar problemas de desfase de zona horaria al obtener el día de la semana
+    const dateObj = new Date(year, month - 1, day, 12, 0, 0);
+    const dayOfWeek = dateObj.getDay(); // 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
+
+    let candidateHours: string[] = [];
+    if (dayOfWeek >= 1 && dayOfWeek <= 5) {
+      // Lunes a Viernes: 4:00 PM a 6:30 PM (el último slot de 30 mins empieza a las 6:00 PM)
+      candidateHours = ["16:00", "16:30", "17:00", "17:30", "18:00"];
+    } else if (dayOfWeek === 6) {
+      // Sábado: 10:00 AM a 1:00 PM (el último slot de 30 mins empieza a las 12:30 PM)
+      candidateHours = ["10:00", "10:30", "11:00", "11:30", "12:00", "12:30"];
+    }
+
+    const availableSlots: string[] = [];
+    const now = new Date();
+
+    for (const timeStr of candidateHours) {
+      const [hours, minutes] = timeStr.split(":").map(Number);
+      const slotStart = new Date(year, month - 1, day, hours, minutes);
+      const slotEnd = new Date(slotStart.getTime() + 30 * 60 * 1000);
+
+      // 1. Filtrar si está en el pasado (si es hoy)
+      if (slotStart.getTime() <= now.getTime()) {
+        continue;
+      }
+
+      // 2. Filtrar si se traslapa con alguna hora ocupada de Google Calendar
+      const hasOverlap = busySlots.some((event: { start: string; end: string }) => {
+        const eventStart = new Date(event.start);
+        const eventEnd = new Date(event.end);
+        return slotStart < eventEnd && slotEnd > eventStart;
+      });
+
+      if (!hasOverlap) {
+        availableSlots.push(timeStr);
+      }
+    }
+
+    // Limpiar selector y rellenar opciones
+    scheduleTimeSelect.innerHTML = "";
+
+    if (dayOfWeek === 0) {
+      const option = document.createElement("option");
+      option.value = "";
+      option.disabled = true;
+      option.selected = true;
+      option.textContent = "Los domingos no se labora";
+      scheduleTimeSelect.appendChild(option);
+    } else if (availableSlots.length === 0) {
+      const option = document.createElement("option");
+      option.value = "";
+      option.disabled = true;
+      option.selected = true;
+      option.textContent = "No hay horarios disponibles";
+      scheduleTimeSelect.appendChild(option);
+    } else {
+      const placeholderOpt = document.createElement("option");
+      placeholderOpt.value = "";
+      placeholderOpt.disabled = true;
+      placeholderOpt.selected = true;
+      placeholderOpt.textContent = "Elige un horario";
+      scheduleTimeSelect.appendChild(placeholderOpt);
+
+      availableSlots.forEach((slot) => {
+        const [h, m] = slot.split(":").map(Number);
+        const ampm = h >= 12 ? "PM" : "AM";
+        const displayHour = h % 12 === 0 ? 12 : h % 12;
+        const displayMinute = m < 10 ? `0${m}` : m;
+        const displayStr = `${displayHour}:${displayMinute} ${ampm}`;
+
+        const option = document.createElement("option");
+        option.value = slot;
+        option.textContent = displayStr;
+        scheduleTimeSelect.appendChild(option);
+      });
+    }
+  }
+
+  // Establecer fecha mínima como hoy y agregar listener para cambios de fecha
   if (scheduleDateInput) {
-    const today = new Date().toISOString().split("T")[0];
-    scheduleDateInput.min = today;
-    scheduleDateInput.value = today;
+    const now = new Date();
+    
+    // Obtener la fecha local actual del cliente en formato YYYY-MM-DD
+    const localYear = now.getFullYear();
+    const localMonth = String(now.getMonth() + 1).padStart(2, "0");
+    const localDate = String(now.getDate()).padStart(2, "0");
+    const todayStr = `${localYear}-${localMonth}-${localDate}`;
+    
+    scheduleDateInput.min = todayStr;
+    
+    // Determinar la fecha por defecto inicial para mejorar la UX
+    let defaultDate = new Date(now);
+    const dayOfWeek = defaultDate.getDay(); // 0 = Domingo, 6 = Sábado
+    const currentHour = defaultDate.getHours();
+    const currentMinute = defaultDate.getMinutes();
+    const currentMinutes = currentHour * 60 + currentMinute;
+    
+    let daysToAdd = 0;
+    if (dayOfWeek === 0) {
+      // Domingo: la oficina está cerrada, seleccionar el próximo lunes
+      daysToAdd = 1;
+    } else if (dayOfWeek === 6 && currentMinutes >= 13 * 60) {
+      // Sábado después de la 1:00 PM: oficina cerrada, seleccionar el próximo lunes
+      daysToAdd = 2;
+    } else if (dayOfWeek >= 1 && dayOfWeek <= 5 && currentMinutes >= 18.5 * 60) {
+      // Lunes a Viernes después de las 6:30 PM: oficina cerrada, seleccionar el día siguiente
+      if (dayOfWeek === 5) {
+        // Viernes en la noche -> seleccionar sábado
+        daysToAdd = 1;
+      } else {
+        // Lunes-Jueves en la noche -> seleccionar mañana
+        daysToAdd = 1;
+      }
+    }
+    
+    if (daysToAdd > 0) {
+      defaultDate.setDate(defaultDate.getDate() + daysToAdd);
+    }
+    
+    const defYear = defaultDate.getFullYear();
+    const defMonth = String(defaultDate.getMonth() + 1).padStart(2, "0");
+    const defDate = String(defaultDate.getDate()).padStart(2, "0");
+    const defaultDateStr = `${defYear}-${defMonth}-${defDate}`;
+    
+    scheduleDateInput.value = defaultDateStr;
+    scheduleDateInput.addEventListener("change", updateAvailableHours);
+    updateAvailableHours(); // Cargar disponibilidad inicial
   }
 
   if (scheduleBtn && scheduleModal) {
@@ -1726,6 +1970,7 @@ import Footer from "../components/Footer.astro";
       if (scheduleLoadingCard) scheduleLoadingCard.classList.add("hidden");
       if (scheduleSuccessCard) scheduleSuccessCard.classList.add("hidden");
       if (scheduleStatusEl) scheduleStatusEl.textContent = "";
+      updateAvailableHours(); // Refrescar slots al abrir modal
     });
   }
 
@@ -1879,10 +2124,25 @@ import Footer from "../components/Footer.astro";
         });
 
         if (scheduleSuccessDetails) {
-          scheduleSuccessDetails.innerHTML = `<div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(37,211,102,0.25); border-radius: 8px; padding: 0.9rem; margin-bottom: 1.2rem; text-align: left;"><div style="color: #25d366; font-weight: 700; margin-bottom: 0.4rem;">📅 ${fechaLegible} - ${horaLegible}</div><div style="font-size: 0.85rem; color: #aaa;">✉️ Evento sincronizado en Google Calendar con <strong>${clientEmail}</strong> y <strong>${CREW_EMAIL}</strong></div></div>Haz clic abajo para enviar la confirmación inmediata por WhatsApp y coordinar los detalles.`;
+          scheduleSuccessDetails.innerHTML = `
+            <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(241, 205, 0, 0.25); border-radius: 12px; padding: 1.5rem; text-align: center; box-shadow: 0 4px 20px rgba(241, 205, 0, 0.08); margin-bottom: 0.5rem;">
+              <div style="color: #f1cd00; font-weight: 800; font-size: 1.2rem; margin-bottom: 0.5rem; letter-spacing: 0.5px;">
+                📅 ${fechaLegible}
+              </div>
+              <div style="color: #ffffff; font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem;">
+                🕒 ${horaLegible}
+              </div>
+              <div style="font-size: 0.88rem; color: #d0d0d0; line-height: 1.6; margin-bottom: 1.2rem; text-align: left;">
+                Hemos sincronizado la invitación en Google Calendar entre <strong style="color: #fff;">${clientEmail}</strong> y <strong style="color: #fff;">${CREW_EMAIL}</strong>.
+              </div>
+              <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 1rem; font-size: 0.82rem; color: #aaa; text-align: left; line-height: 1.4;">
+                ✉️ Por favor, revisa tu bandeja de entrada y **acepta la invitación** para confirmar la cita y agregarla a tu agenda personal.
+              </div>
+            </div>
+          `;
         }
 
-        // Ocultar tarjeta de carga y mostrar exclusivamente la tarjeta de éxito con botón verde
+        // Ocultar tarjeta de carga y mostrar exclusivamente la tarjeta de éxito con botón verd
         if (scheduleLoadingCard) scheduleLoadingCard.classList.add("hidden");
         if (scheduleSuccessCard) scheduleSuccessCard.classList.remove("hidden");
         scheduleForm.reset();
