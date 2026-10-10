@@ -34,7 +34,7 @@ import Footer from "../components/Footer.astro";
           >
         </div>
         <div class="hero-visual">
-          <img src="/Tech-Crew/tech_mockup.jpg" alt="Maqueta Digital de Sitio Web Moderno en MacBook e iPhone" class="hero-mockup-img" />
+          <img src="/Tech-Crew/tech_mockup.jpg" alt="Maqueta Digital de Dashboard y Aplicación Móvil en Modo Dark con Gráficos" class="hero-mockup-img" />
         </div>
       </div>
     </div>
@@ -155,9 +155,9 @@ import Footer from "../components/Footer.astro";
           <div class="stat-card-body">
             <h4>Landing Pages de Alta Conversi&oacute;n</h4>
             <p>
-              P&aacute;ginas estrat&eacute;gicas enfocadas en convertir visitas
-              en clientes reales. Arquitectura persuasiva y velocidad extrema
-              para maximizar el retorno de tu publicidad y presencia web.
+              P&aacute;ginas estrat&eacute;gicas dise&ntilde;adas para convertir visitas
+              en clientes reales. Dise&ntilde;o enfocado en la conversi&oacute;n, llamadas a la acci&oacute;n
+              persuasivas y velocidad extrema para maximizar el retorno de tu inversi&oacute;n publicitaria.
             </p>
             <div class="stat-features">
               <div class="feature-item">
@@ -191,17 +191,52 @@ import Footer from "../components/Footer.astro";
             <p>
               Llevamos tu negocio tradicional, cat&aacute;logo o producto
               f&iacute;sico al ecosistema digital con bajo costo por
-              tr&aacute;fico controlado, permiti&eacute;ndote competir y escalar
-              con tecnolog&iacute;a moderna.
+              tr&aacute;fico controlado, automatizando procesos y permiti&eacute;ndote
+              competir y operar sin depender de presencia f&iacute;sica constante.
             </p>
             <div class="stat-features">
               <div class="feature-item">
                 <span class="check-icon">&#10003;</span>
-                <span>Automatizaci&oacute;n de procesos repetitivos</span>
+                <span>Automatizaci&oacute;n de pedidos y procesos repetitivos</span>
               </div>
               <div class="feature-item">
                 <span class="check-icon">&#10003;</span>
                 <span>Estrategias adaptadas al presupuesto de tu negocio</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Caso 6: Marketing Digital por Correo y Redes Sociales -->
+        <div class="stat-card">
+          <div class="stat-card-top">
+            <span class="card-chip">Marketing &amp; Redes Sociales</span>
+            <div class="stat-metric">+220%</div>
+            <div class="stat-metric-label">
+              Alcance, visibilidad y conversiones
+            </div>
+          </div>
+          <div class="stat-card-body">
+            <h4>Marketing Digital por Correo y Redes Sociales</h4>
+            <p>
+              Dise&ntilde;amos e impulsamos campa&ntilde;as de env&iacute;o de
+              correos con botones estrat&eacute;gicos y publicaciones en redes
+              que redirigen tr&aacute;fico cualificado directo a tus tiendas,
+              cat&aacute;logos o promociones, colaborando en tus estrategias de
+              mercadeo para elevar ingresos y ventas.
+            </p>
+            <div class="stat-features">
+              <div class="feature-item">
+                <span class="check-icon">&#10003;</span>
+                <span
+                  >Campañas de email con botones de redirección a tienda y ofertas</span
+                >
+              </div>
+              <div class="feature-item">
+                <span class="check-icon">&#10003;</span>
+                <span
+                  >Estrategias multicanal para potenciar mercadeo y ventas</span
+                >
               </div>
             </div>
           </div>
@@ -404,6 +439,48 @@ import Footer from "../components/Footer.astro";
             </div>
           </div>
         </div>
+
+        <!-- 5. Marketing Digital por Correo y Redes Sociales -->
+        <div class="solution-card">
+          <div class="card-header" onclick="toggleCard(this)">
+            <div class="header-info">
+              <span class="solution-chip"
+                >Campa&ntilde;as &amp; Tr&aacute;fico Comercial</span
+              >
+              <span class="solution-title"
+                >Marketing Digital por Correo y Redes Sociales</span
+              >
+            </div>
+            <span class="icon">+</span>
+          </div>
+          <div class="card-content">
+            <div class="card-content-inner">
+              <p>
+                Potenciamos la visibilidad comercial de tu marca creando
+                campa&ntilde;as efectivas de email marketing y presencia
+                en redes sociales. Dise&ntilde;amos correos con llamados
+                a la acci&oacute;n claros (botones interactivos directos a
+                tus tiendas online, l&iacute;neas de productos o avisos de
+                descuento) para canalizar clientes potenciales, colaborar
+                en tus metas de mercadeo y maximizar tus ingresos.
+              </p>
+              <div class="solution-bullets">
+                <div class="solution-bullet">
+                  <span class="bullet-check">&#10003;</span>
+                  <span
+                    ><strong>Email Marketing de Alto Impacto:</strong> Correos con botones de acci&oacute;n directa a cat&aacute;logos, tiendas y promociones para incentivar la compra inmediata.</span
+                  >
+                </div>
+                <div class="solution-bullet">
+                  <span class="bullet-check">&#10003;</span>
+                  <span
+                    ><strong>Sinergia con Redes Sociales:</strong> Enlaces y flujos optimizados para convertir seguidores y audiencias en compradores activos.</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -527,6 +604,9 @@ import Footer from "../components/Footer.astro";
             <select name="servicio_interes" required>
               <option value="Ventas Automatizadas por WhatsApp"
                 >Ventas Automatizadas por WhatsApp / Tienda Web</option
+              >
+              <option value="Marketing Digital por Correo y Redes Sociales"
+                >Marketing Digital por Correo y Redes Sociales</option
               >
               <option value="Menús Web para Restaurantes"
                 >Men&uacute;s Web para Restaurantes (QR &amp; WhatsApp)</option
@@ -850,7 +930,6 @@ import Footer from "../components/Footer.astro";
     text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     position: relative;
@@ -919,6 +998,12 @@ import Footer from "../components/Footer.astro";
     letter-spacing: 0.5px;
   }
 
+  .stat-card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
   .stat-card-body h4 {
     font-size: 1.35rem;
     font-weight: 800;
@@ -942,6 +1027,7 @@ import Footer from "../components/Footer.astro";
     padding: 1rem;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: auto;
   }
 
   .feature-item {
